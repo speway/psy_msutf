@@ -5,6 +5,13 @@ on:
     - cron: "0 5 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-telegram-posts
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -27,6 +34,7 @@ jobs:
         env:
           TELEGRAM_CHANNEL_NAME: psy_msutf
           TELEGRAM_CHANNEL_URL: https://t.me/psy_msutf
+          TELEGRAM_MAX_PAGES: "30"
 
       - name: Check content
         run: npm run check:content
@@ -40,5 +48,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/posts.json
-          git commit -m "chore: sync Telegram posts [skip ci]"
+          git commit -m "chore: sync Telegram posts"
           git push

@@ -34,7 +34,7 @@ npm run build
 Переменные окружения:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://psy_msutf.vercel.app
+NEXT_PUBLIC_SITE_URL=https://psy-msutf.vercel.app
 TELEGRAM_CHANNEL_NAME=psy_msutf
 TELEGRAM_CHANNEL_URL=https://t.me/psy_msutf
 CRON_SECRET=
