@@ -1,0 +1,17 @@
+{
+  "name": "Научный сектор психологии",
+  "short_name": "Научный сектор",
+  "description": "Материалы, публикации и архив психологического направления ТФ МГУ.",
+  "start_url": "/ru",
+  "display": "standalone",
+  "background_color": "#F5EEDC",
+  "theme_color": "#4a1028",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "scope": "/"
+}

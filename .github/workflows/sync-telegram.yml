@@ -1,0 +1,44 @@
+name: Sync Telegram Posts
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync Telegram posts
+        run: npm run sync:telegram
+        env:
+          TELEGRAM_CHANNEL_NAME: psy_msutf
+          TELEGRAM_CHANNEL_URL: https://t.me/psy_msutf
+
+      - name: Check content
+        run: npm run check:content
+
+      - name: Commit and push changes
+        run: |
+          if [ -z "$(git status --porcelain data/posts.json)" ]; then
+            echo "No Telegram changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/posts.json
+          git commit -m "chore: sync Telegram posts [skip ci]"
+          git push

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" fill="none">
+  <!-- Star on top -->
+  <polygon points="60,2 64,12 75,12 67,18 70,29 60,22 50,29 53,18 45,12 56,12" fill="#d49a35"/>
+  <!-- Spire -->
+  <rect x="57" y="12" width="6" height="30" fill="#d49a35"/>
+  <!-- Central tower top tier -->
+  <rect x="46" y="40" width="28" height="10" rx="1" fill="#7a2848"/>
+  <!-- Central tower mid tier -->
+  <rect x="42" y="48" width="36" height="14" rx="1" fill="#632038"/>
+  <!-- Central tower main body -->
+  <rect x="38" y="60" width="44" height="16" rx="1" fill="#4a1028"/>
+  <!-- Central tower base -->
+  <rect x="34" y="74" width="52" height="18" rx="2" fill="#3a0c20"/>
+  <!-- Left wing -->
+  <rect x="4" y="68" width="32" height="24" rx="2" fill="#4a1028"/>
+  <rect x="2" y="88" width="36" height="10" rx="2" fill="#3a0c20"/>
+  <!-- Right wing -->
+  <rect x="84" y="68" width="32" height="24" rx="2" fill="#4a1028"/>
+  <rect x="82" y="88" width="36" height="10" rx="2" fill="#3a0c20"/>
+  <!-- Base/ground -->
+  <rect x="0" y="96" width="120" height="8" rx="2" fill="#2a0818"/>
+  <!-- Left wing windows row -->
+  <rect x="10" y="74" width="4" height="4" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <rect x="18" y="74" width="4" height="4" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <rect x="26" y="74" width="4" height="4" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <!-- Right wing windows row -->
+  <rect x="90" y="74" width="4" height="4" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <rect x="98" y="74" width="4" height="4" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <rect x="106" y="74" width="4" height="4" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <!-- Central tower windows -->
+  <rect x="44" y="64" width="6" height="8" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <rect x="54" y="64" width="6" height="8" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <rect x="64" y="64" width="6" height="8" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <rect x="74" y="64" width="4" height="8" rx="0.5" fill="#d49a35" opacity="0.6"/>
+  <!-- Central tower columns -->
+  <rect x="46" y="50" width="4" height="12" rx="0.5" fill="#d49a35" opacity="0.4"/>
+  <rect x="54" y="50" width="4" height="12" rx="0.5" fill="#d49a35" opacity="0.4"/>
+  <rect x="62" y="50" width="4" height="12" rx="0.5" fill="#d49a35" opacity="0.4"/>
+  <rect x="70" y="50" width="4" height="12" rx="0.5" fill="#d49a35" opacity="0.4"/>
+</svg>

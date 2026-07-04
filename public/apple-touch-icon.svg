@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" rx="24" fill="#F5EEDC"/>
+  <rect x="14" y="14" width="152" height="152" rx="20" fill="none" stroke="#d49a35" stroke-width="3" opacity="0.5"/>
+  <text x="90" y="116" font-family="serif" font-size="80" fill="#4a1028" text-anchor="middle" font-style="italic" font-weight="bold">Ψ</text>
+</svg>
