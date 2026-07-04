@@ -1,5 +1,6 @@
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { sanitizePostTextFields } from "../lib/text-sanitize";
 
 type Post = {
   id?: string;
@@ -10,25 +11,39 @@ type Post = {
   category?: string;
 };
 
+type PostsFile = Post[] | { posts?: Post[]; [key: string]: unknown };
+
 const filePath = join(process.cwd(), "data", "posts.json");
 const dirtyPatterns: Array<[RegExp, string]> = [
   [/\uFFFD|�/, "replacement character"],
   [/новости[_\s]*мгу/i, "raw новости_мгу tag"],
   [/https?:\/\/\S+/i, "raw URL"],
-  [/\b(Сессия|Психология)-это\b/i, "bad hyphen before это"],
-  [/9\s*Мая-\s*это/i, "bad 9 Мая hyphen"],
-  [/SPSS\s*-\s*он/i, "bad SPSS hyphen"],
+  [/\b(Сессия|Психология)\s*[-–‑‒−]\s*это\b/i, "bad hyphen before это"],
+  [/9\s*Мая\s*[-–‑‒−]\s*это/i, "bad 9 Мая hyphen"],
+  [/SPSS\s*[-–‑‒−]\s*(он|это)\b/i, "bad SPSS hyphen"],
 ];
 
-function getPosts(): Post[] {
-  if (!existsSync(filePath)) return [];
-  const raw = JSON.parse(readFileSync(filePath, "utf8"));
-  if (Array.isArray(raw)) return raw;
-  if (raw && Array.isArray(raw.posts)) return raw.posts;
-  return [];
+function getPostsFile(): { raw: PostsFile; posts: Post[] } {
+  if (!existsSync(filePath)) return { raw: { posts: [] }, posts: [] };
+  const raw = JSON.parse(readFileSync(filePath, "utf8")) as PostsFile;
+  if (Array.isArray(raw)) return { raw, posts: raw };
+  if (raw && Array.isArray(raw.posts)) return { raw, posts: raw.posts };
+  return { raw, posts: [] };
 }
 
-const posts = getPosts();
+function writePostsFile(raw: PostsFile, posts: Post[]): void {
+  const next = Array.isArray(raw) ? posts : { ...raw, posts };
+  writeFileSync(filePath, JSON.stringify(next, null, 2) + "\n", "utf8");
+}
+
+const { raw, posts: originalPosts } = getPostsFile();
+const posts = originalPosts.map((post) => sanitizePostTextFields(post));
+
+if (JSON.stringify(posts) !== JSON.stringify(originalPosts)) {
+  writePostsFile(raw, posts);
+  console.log("Content auto-fix applied: normalized safe typography in data/posts.json");
+}
+
 const errors: string[] = [];
 const seen = new Set<string>();
 

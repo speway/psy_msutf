@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fetchAllTelegramPosts } from "../lib/telegram";
 import { normalizePosts } from "../lib/normalize";
+import { sanitizePostTextFields } from "../lib/text-sanitize";
 import type { Post } from "../lib/models";
 
 const channelName = getTelegramChannelName();
@@ -117,7 +118,7 @@ async function main() {
 
   const posts = normalized.map((post) =>
     withStableMetadata(
-      {
+      sanitizePostTextFields({
         id: post.id,
         title: post.cleanTitle,
         excerpt: post.excerpt,
@@ -130,7 +131,7 @@ async function main() {
         telegramLink: post.telegramLink,
         createdAt: post.createdAt,
         updatedAt: post.updatedAt,
-      },
+      }),
       existing,
       now
     )

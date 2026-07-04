@@ -1,4 +1,5 @@
 import type { Post } from "./models";
+import { sanitizePublicText } from "./text-sanitize";
 import { getPostRubric, getManualPostRubric } from "./rubric";
 
 const SYSTEM_KEYWORDS = [
@@ -159,10 +160,7 @@ function removeUrls(text: string): string {
 }
 
 function normalizeHyphens(text: string): string {
-  return text
-    .replace(/9\s*Мая\s*[-–—]\s*это/gi, "9 Мая — это")
-    .replace(/\bSPSS\s*[-–—]\s*он\b/gi, "SPSS — он")
-    .replace(HYPHEN_NORMALIZE, "$1 — это");
+  return sanitizePublicText(text).replace(HYPHEN_NORMALIZE, "$1 — это");
 }
 
 function removeParensUrls(text: string): string {
