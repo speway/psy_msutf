@@ -207,7 +207,7 @@ export function DisciplinesExplorer({
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {displayDisciplines.map((discipline, index) => (
               <li
-                key={discipline}
+                key={`${discipline}-${index}`}
                 className="flex items-center justify-center min-w-[180px] border-2 border-border/40 bg-card px-4 py-3.5 text-sm font-semibold text-foreground leading-relaxed tracking-wide text-center transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-bauhaus hover:border-bauhaus-blue/20 animate-in duration-700 slide-in-from-bottom-6 fill-mode-both"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
