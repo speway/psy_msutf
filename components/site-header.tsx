@@ -236,7 +236,7 @@ export function SiteHeader() {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 aria-current={pathname === link.href ? "page" : undefined}
-                className={`px-3 py-1 text-sm font-[750] tracking-wide rounded-[6px] transition-all duration-200 min-h-[42px] flex items-center border whitespace-nowrap ${
+                className={`px-3 py-1 text-sm font-bold tracking-wide rounded-[6px] transition-all duration-200 min-h-[42px] flex items-center border whitespace-nowrap ${
                   pathname === link.href
                     ? "bg-accent/15 border-accent/30 text-foreground"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:bg-accent/10"
@@ -387,7 +387,7 @@ export function SiteHeader() {
                     handleNavClick(e, link.href);
                   }}
                   aria-current={pathname === link.href ? "page" : undefined}
-                  className={`flex items-center px-4 min-h-[48px] text-sm font-[750] rounded-[6px] transition-all duration-150 ${
+                  className={`flex items-center px-4 min-h-[48px] text-sm font-bold rounded-[6px] transition-all duration-150 ${
                     pathname === link.href
                       ? "bg-accent/20 text-foreground"
                       : "text-muted-foreground hover:bg-accent/10 hover:text-foreground"
@@ -411,7 +411,7 @@ export function SiteHeader() {
                       e.stopPropagation();
                       setIsMobileThemeOpen((v) => !v);
                     }}
-                    className="flex items-center justify-between w-full min-h-[48px] px-4 text-sm font-[750] rounded-[6px] border-2 border-border bg-background hover:bg-accent/10 transition-colors duration-150"
+                    className="flex items-center justify-between w-full min-h-[48px] px-4 text-sm font-bold rounded-[6px] border-2 border-border bg-background hover:bg-accent/10 transition-colors duration-150"
                     aria-expanded={isMobileThemeOpen}
                     aria-controls="mobile-theme-list"
                   >
@@ -473,7 +473,7 @@ export function SiteHeader() {
                   rel="noopener noreferrer"
                   role="menuitem"
                   onClick={closeMobileMenu}
-                  className="flex items-center gap-2 px-4 min-h-[48px] text-sm font-[750] text-bauhaus-ochre rounded-[6px] hover:bg-accent/10 transition-colors duration-150"
+                  className="flex items-center gap-2 px-4 min-h-[48px] text-sm font-bold text-bauhaus-ochre rounded-[6px] hover:bg-accent/10 transition-colors duration-150"
                 >
                   <Send className="h-4 w-4" aria-hidden="true" />
                   {t.nav.telegram}

@@ -20,7 +20,7 @@ export function InternalLinkCard({
   return (
     <Link
       href={href}
-      className="group block border-2 border-border/80 bg-background/60 p-5 hover:border-bauhaus-ochre/30 hover:bg-background hover:-translate-y-0.5 transition-all duration-300"
+      className="group block no-underline border-2 border-border/80 bg-background/60 p-5 hover:border-bauhaus-ochre/30 hover:bg-background hover:-translate-y-0.5 transition-all duration-300"
     >
       <div className="flex items-start gap-4">
         {Icon && (
@@ -29,10 +29,10 @@ export function InternalLinkCard({
           </div>
         )}
         <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-bold uppercase tracking-wider group-hover:text-bauhaus-ochre transition-colors">
+          <h3 className="text-lg font-semibold tracking-wide group-hover:text-bauhaus-ochre transition-colors">
             {title}
           </h3>
-          <p className="text-xs text-muted-foreground mt-1 leading-relaxed line-clamp-2">
+          <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
             {description}
           </p>
           <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-bauhaus-ochre group-hover:gap-2.5 transition-all">

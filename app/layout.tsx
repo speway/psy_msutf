@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.svg",
-    apple: "/apple-touch-icon.svg",
+    icon: "/favicon.svg?v=3",
+    apple: "/apple-touch-icon.svg?v=3",
   },
   manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#082c36",
+  themeColor: "#0daf9a",
 };
 
 export default async function RootLayout({
@@ -66,7 +66,7 @@ export default async function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var t=localStorage.getItem('theme')||'academic';document.documentElement.setAttribute('data-theme',t);}catch(e){}})()",
+              "(function(){try{var t=localStorage.getItem('theme');var a=['academic','bauhaus','high-contrast'];if(!a.includes(t)){t='academic';localStorage.setItem('theme',t);}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','academic');}})()",
           }}
         />
         <script

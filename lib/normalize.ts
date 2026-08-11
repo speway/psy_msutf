@@ -317,10 +317,24 @@ function generateTitleFromContent(text: string): string {
 
   if (lines.length > 0) {
     const clean = cleanTitleLine(lines[0]);
-    if (clean.length > 5) return clean.substring(0, 90);
+    if (clean.length > 5) return shortenTitleNaturally(clean);
   }
 
   return "";
+}
+
+function shortenTitleNaturally(text: string, maxLength = 90): string {
+  const cleaned = collapseSpaces(text).trim();
+  if (cleaned.length <= maxLength) return cleaned;
+
+  const withinLimit = cleaned.slice(0, maxLength + 1);
+  const sentence = withinLimit.match(/^(.{12,}?[.!?])(?:\s|$)/)?.[1];
+  if (sentence) return sentence.trim();
+
+  return withinLimit
+    .replace(/\s+\S*$/, "")
+    .replace(/[,:;\-–—]+$/, "")
+    .trim();
 }
 
 function cleanAll(text: string): string {
@@ -394,10 +408,16 @@ function generateCoverTitle(title: string): string {
   const cleaned = title.replace(TRIM_PATTERN, "").trim();
   if (!cleaned) return "";
   const words = cleaned.split(/\s+/).filter((w) => w.length > 0);
-  if (words.length <= 5) return cleaned;
-  const short = words.slice(0, 4).join(" ");
-  if (short.length <= 40) return short + "…";
-  return words.slice(0, 3).join(" ") + "…";
+  if (words.length <= 8 && cleaned.length <= 76) return cleaned;
+
+  const sentence = cleaned.match(/^(.+?[.!?])(?:\s|$)/)?.[1];
+  if (sentence && sentence.length <= 76) return sentence;
+
+  return words
+    .slice(0, 7)
+    .join(" ")
+    .replace(/[,:;\-–—]+$/, "")
+    .trim();
 }
 
 export function deduplicatePosts<
@@ -497,11 +517,11 @@ function normalizeTitle(
     !isMostlyEmoji(result) &&
     !isMostlyDecoration(result)
   ) {
-    return result.substring(0, 90);
+    return shortenTitleNaturally(result);
   }
 
   const generated = generateTitleFromContent(content);
-  return generated ? generated.substring(0, 90) : "";
+  return generated ? shortenTitleNaturally(generated) : "";
 }
 
 function shouldHidePost(

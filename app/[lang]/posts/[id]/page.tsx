@@ -244,7 +244,7 @@ export default async function LangPostPage({ params }: Props) {
                   className="block h-full"
                   aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
                 >
-                  <article className="group bauhaus-card bauhaus-card-hover h-full flex flex-col cursor-pointer relative hover:border-bauhaus-ochre/50 hover:-translate-y-[3px] hover:shadow-[0_4px_20px_rgba(74,16,40,0.08),0_1px_4px_rgba(74,16,40,0.04)]">
+                  <article className="group bauhaus-card bauhaus-card-hover h-full flex flex-col cursor-pointer relative hover:border-bauhaus-ochre/50 hover:-translate-y-[3px] hover:shadow-[0_4px_20px_rgba(8,44,54,0.08),0_1px_4px_rgba(8,44,54,0.04)]">
                     <div
                       className="absolute inset-0 bg-gradient-to-br from-bauhaus-ochre/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                       aria-hidden="true"

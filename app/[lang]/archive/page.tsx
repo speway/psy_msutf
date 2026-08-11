@@ -62,7 +62,7 @@ export default async function LangArchivePage({ params }: Props) {
   ];
 
   return (
-    <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 ">
+    <div className="page-archive relative animate-in fade-in slide-in-from-bottom-4 duration-500">
       <BauhausBackground variant="archive" />
 
       <AnimateOnScroll
@@ -71,11 +71,11 @@ export default async function LangArchivePage({ params }: Props) {
         direction="up"
       >
         <div className="container mx-auto px-4 pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12">
-          <div className="max-w-[640px] mx-auto text-center">
+          <div className="max-w-[920px] mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-burgundy/30 text-bauhaus-burgundy bg-bauhaus-milky/60">
               {t.archive.badge}
             </div>
-            <h1 className="text-4xl sm:text-5xl font-black leading-[1.05] tracking-tighter uppercase text-bauhaus-burgundy">
+            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight text-bauhaus-burgundy">
               {t.archive.title}
             </h1>
             <div className="mx-auto mt-4 h-1 w-16 bg-bauhaus-burgundy/40" />

@@ -296,7 +296,7 @@ export const uz: SiteTranslation = {
     nothingFound: "Hech narsa topilmadi",
     reset: "Tozalash",
     tryChanging: "Qidiruv so'rovini o'zgartiring",
-    subjects: "fan",
+    subjectForms: ["fan", "fan", "fan"],
     foundCount: "Topilgan fanlar",
   },
   contactsUI: {

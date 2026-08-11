@@ -73,11 +73,11 @@ export function Roadmap({ t, steps }: RoadmapProps) {
   const doneCount = mounted ? completed.size : 0;
 
   return (
-    <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 ">
-      <div className="container mx-auto px-4 py-12 md:py-20 max-w-3xl">
+    <div className="roadmap-page relative animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="container mx-auto px-4 py-10 md:py-16 max-w-4xl">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground/72 hover:text-foreground transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-muted-foreground hover:text-foreground transition-colors mb-8 group no-underline"
         >
           <ArrowRight className="h-3.5 w-3.5 rotate-180 transition-transform group-hover:-translate-x-1" />
           {t.backToHome}
@@ -87,12 +87,10 @@ export function Roadmap({ t, steps }: RoadmapProps) {
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue bg-bauhaus-blue/5">
             {t.badge}
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black leading-[1.05] tracking-tighter uppercase">
-            {t.heading}
-            <br />
-            {t.headingLine2}
+          <h1 className="max-w-2xl text-4xl sm:text-5xl font-bold leading-[1.02] tracking-tight">
+            {t.heading} {t.headingLine2}
           </h1>
-          <p className="mt-3 text-sm text-muted-foreground max-w-lg leading-relaxed">
+          <p className="mt-4 text-base text-muted-foreground max-w-2xl leading-relaxed">
             {t.description}
           </p>
           {mounted && (
@@ -132,7 +130,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                     : "border-bauhaus-blue/10 bg-transparent"
                 }`}
               >
-                <div className="flex items-start gap-4 p-5 sm:p-6">
+                <div className="flex items-start gap-3 p-4 sm:gap-4 sm:p-6">
                   <button
                     type="button"
                     onClick={() => toggleStep(stepKey)}
@@ -155,10 +153,10 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                       isCompleted ? "opacity-50" : ""
                     }`}
                   >
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                       <div className="flex-1 min-w-0">
                         <h3
-                          className={`text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${
+                          className={`text-base font-semibold tracking-wide transition-colors duration-300 ${
                             isCompleted
                               ? "text-muted-foreground line-through"
                               : "text-foreground"
@@ -166,15 +164,15 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                         >
                           {item.title}
                         </h3>
-                        <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                        <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
                           {item.description}
                         </p>
                       </div>
-                      <div className="flex items-center gap-2 shrink-0">
+                      <div className="flex items-center gap-2 sm:shrink-0">
                         <button
                           type="button"
                           onClick={() => toggleStep(stepKey)}
-                          className={`inline-flex items-center gap-1 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider border transition-colors rounded-sm min-h-[44px] ${
+                          className={`inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold tracking-wide border transition-colors rounded-sm min-h-[44px] ${
                             isCompleted
                               ? "border-bauhaus-ochre/40 text-bauhaus-ochre bg-bauhaus-ochre/5 hover:bg-bauhaus-ochre/10"
                               : "border-bauhaus-blue/20 text-bauhaus-blue hover:bg-bauhaus-blue hover:text-white"
@@ -210,7 +208,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                         <div>
                           <div className="flex items-center gap-1.5 mb-2">
                             <ListChecks className="w-3.5 h-3.5 text-bauhaus-blue/60" />
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-bauhaus-blue/60">
+                            <span className="text-[11px] font-semibold uppercase tracking-wide text-bauhaus-blue/70">
                               {t.actions}
                             </span>
                           </div>
@@ -218,7 +216,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                             {item.actions.map((action, ai) => (
                               <li
                                 key={ai}
-                                className="text-[11px] text-muted-foreground leading-relaxed flex items-start gap-1.5"
+                                className="text-[13px] text-muted-foreground leading-relaxed flex items-start gap-1.5"
                               >
                                 <span className="mt-0.5 block w-1 h-1 rounded-full bg-bauhaus-blue/30 shrink-0" />
                                 {action}
@@ -230,7 +228,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                         <div>
                           <div className="flex items-center gap-1.5 mb-2">
                             <ExternalLink className="w-3.5 h-3.5 text-bauhaus-ochre/70" />
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-bauhaus-ochre/70">
+                            <span className="text-[11px] font-semibold uppercase tracking-wide text-bauhaus-ochre">
                               {t.links}
                             </span>
                           </div>
@@ -239,7 +237,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                               <li key={li}>
                                 <Link
                                   href={link.url}
-                                  className="inline-flex items-center gap-1 text-[11px] font-medium text-bauhaus-blue hover:text-bauhaus-ochre transition-colors"
+                                  className="inline-flex items-center gap-1 text-[13px] font-medium text-bauhaus-blue hover:text-bauhaus-ochre transition-colors no-underline"
                                 >
                                   <ArrowRight className="w-2.5 h-2.5" />
                                   {link.title}
@@ -252,11 +250,11 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                         <div>
                           <div className="flex items-center gap-1.5 mb-2">
                             <Target className="w-3.5 h-3.5 text-bauhaus-blue/60" />
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-bauhaus-blue/60">
+                            <span className="text-[11px] font-semibold uppercase tracking-wide text-bauhaus-blue/70">
                               {t.result}
                             </span>
                           </div>
-                          <p className="text-[11px] text-muted-foreground leading-relaxed">
+                          <p className="text-[13px] text-muted-foreground leading-relaxed">
                             {item.result}
                           </p>
                         </div>

@@ -201,7 +201,7 @@ export interface DisciplinesUITranslation {
   nothingFound: string;
   reset: string;
   tryChanging: string;
-  subjects: string;
+  subjectForms: [string, string, string];
   foundCount: string;
 }
 
