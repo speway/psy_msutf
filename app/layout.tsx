@@ -41,13 +41,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.svg",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.svg",
   },
   manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#4a1028",
+  themeColor: "#082c36",
 };
 
 export default async function RootLayout({
@@ -91,10 +91,7 @@ export default async function RootLayout({
         />
         <SkipLink />
         <SiteHeader />
-        <main
-          id="main-content"
-          className="flex-1 page-reveal"
-        >
+        <main id="main-content" className="flex-1 page-reveal">
           {children}
         </main>
         <SiteFooter />

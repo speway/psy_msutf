@@ -103,18 +103,18 @@ export default async function LangHymnPage({ params }: Props) {
       <article className="container mx-auto px-4 py-12 md:py-20 max-w-2xl relative">
         <Link
           href={lh("/")}
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#4A1028]/60 hover:text-[#4A1028] transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-bauhaus-ochre/70 hover:text-bauhaus-blue transition-colors mb-8 group"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
           {backLabel}
         </Link>
 
-        <div className="mb-6 h-px w-20 bg-[#4A1028]/30" />
+        <div className="mb-6 h-px w-20 bg-bauhaus-ochre/40" />
 
-        <h1 className="text-4xl sm:text-5xl font-serif font-bold leading-snug tracking-normal text-[#4A1028] mb-2">
+        <h1 className="text-4xl sm:text-5xl font-serif font-bold leading-snug tracking-normal text-bauhaus-blue mb-2">
           {lang === "uz" ? "Ballada" : lang === "en" ? "Ballad" : "Баллада"}
           <br />
-          <span className="italic font-medium text-[#4A1028]/70">
+          <span className="italic font-medium text-bauhaus-ochre/80">
             ({lang === "uz" ? "Gimn" : lang === "en" ? "Hymn" : "Гимн"})
           </span>{" "}
           {lang === "uz"
@@ -124,12 +124,14 @@ export default async function LangHymnPage({ params }: Props) {
               : "социального психолога"}
         </h1>
 
-        <div className="flex flex-col gap-1 mt-4 mb-10 pb-8 border-b border-[#4A1028]/15">
-          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#4A1028]/50">
-            {wordsLabel} — <span className="text-[#4A1028]">Г.М. Андреева</span>
+        <div className="flex flex-col gap-1 mt-4 mb-10 pb-8 border-b border-bauhaus-blue/15">
+          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-bauhaus-blue/50">
+            {wordsLabel} —{" "}
+            <span className="text-bauhaus-blue">Г.М. Андреева</span>
           </p>
-          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-[#4A1028]/50">
-            {musicLabel} — <span className="text-[#4A1028]">Т.Ю. Базаров</span>
+          <p className="text-xs font-sans font-semibold uppercase tracking-widest text-bauhaus-blue/50">
+            {musicLabel} —{" "}
+            <span className="text-bauhaus-blue">Т.Ю. Базаров</span>
           </p>
         </div>
 
@@ -143,7 +145,7 @@ export default async function LangHymnPage({ params }: Props) {
               {stanza.map((line, lineIndex) => (
                 <p
                   key={lineIndex}
-                  className="text-base md:text-lg leading-relaxed text-[#4A1028]/80 font-serif"
+                  className="text-base md:text-lg leading-relaxed text-bauhaus-blue/80 font-serif"
                 >
                   {line}
                 </p>
@@ -152,9 +154,9 @@ export default async function LangHymnPage({ params }: Props) {
           ))}
         </div>
 
-        <div className="mt-10 pt-6 border-t border-[#4A1028]/15">
-          <div className="h-px w-14 bg-[#4A1028]/30" />
-          <p className="mt-3 text-[10px] font-sans text-[#4A1028]/40 uppercase tracking-wider">
+        <div className="mt-10 pt-6 border-t border-bauhaus-blue/15">
+          <div className="h-px w-14 bg-bauhaus-ochre/40" />
+          <p className="mt-3 text-[10px] font-sans text-bauhaus-blue/40 uppercase tracking-wider">
             10 Саммит психологов, Санкт-Петербург, 5 июня 2016 г.
           </p>
         </div>

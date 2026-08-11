@@ -4,13 +4,13 @@
   "description": "Материалы, публикации и архив психологического направления ТФ МГУ.",
   "start_url": "/ru",
   "display": "standalone",
-  "background_color": "#F5EEDC",
-  "theme_color": "#4a1028",
+  "background_color": "#F1F7F6",
+  "theme_color": "#082C36",
   "icons": [
     {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
+      "src": "/apple-touch-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ],
   "scope": "/"

@@ -1,13 +1,11 @@
 "use client";
 
-import { Sun, Moon, Palette, Contrast, ChevronDown, Check } from "lucide-react";
+import { Sun, Moon, Contrast, ChevronDown, Check } from "lucide-react";
 import { useCallback, useRef, useSyncExternalStore } from "react";
 
 const THEMES = [
-  { id: "academic", label: "Академическая", icon: Sun },
-  { id: "bauhaus", label: "Баухаус", icon: Palette },
-  { id: "glamour-archive", label: "Гламурный архив", icon: Moon },
-  { id: "night-archive", label: "Ночной архив", icon: Moon },
+  { id: "academic", label: "Светлая", icon: Sun },
+  { id: "bauhaus", label: "Ночная", icon: Moon },
   { id: "high-contrast", label: "Высокий контраст", icon: Contrast },
 ] as const;
 

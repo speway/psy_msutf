@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import type { AcademicTimelineEntry } from "@/data";
 
-const BURGUNDY = "#4A1028";
+const BURGUNDY = "var(--color-bauhaus-blue)";
 
 interface InteractiveTimelineProps {
   entries: AcademicTimelineEntry[];
@@ -21,7 +21,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
   return (
     <AnimateOnScroll
       as="section"
-      className="border-t border-b border-[#4A1028]/10 py-10 md:py-14"
+      className="border-t border-b border-bauhaus-blue/10 py-10 md:py-14"
       direction="up"
     >
       <div className="container mx-auto px-4">
@@ -29,7 +29,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
           <div className="relative">
             <div
               className="absolute left-[19px] top-0 bottom-0 w-px hidden sm:block"
-              style={{ backgroundColor: "rgba(74, 16, 40, 0.15)" }}
+              style={{ backgroundColor: "color-mix(in srgb, var(--color-bauhaus-blue) 15%, transparent)" }}
             />
 
             <div className="space-y-0">
@@ -55,7 +55,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                           style={{
                             borderColor: isOpen
                               ? BURGUNDY
-                              : "rgba(74, 16, 40, 0.25)",
+                              : "color-mix(in srgb, var(--color-bauhaus-blue) 25%, transparent)",
                             color: isOpen ? "white" : BURGUNDY,
                             backgroundColor: isOpen ? BURGUNDY : "white",
                           }}
@@ -66,7 +66,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                           <div
                             className="sm:hidden h-px flex-1"
                             style={{
-                              backgroundColor: "rgba(74, 16, 40, 0.15)",
+                              backgroundColor: "color-mix(in srgb, var(--color-bauhaus-ochre) 16%, transparent)",
                             }}
                           />
                         )}
@@ -78,7 +78,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                             style={{
                               color: isOpen
                                 ? BURGUNDY
-                                : "rgba(74, 16, 40, 0.75)",
+                                : "color-mix(in srgb, var(--color-bauhaus-blue) 75%, transparent)",
                             }}
                           >
                             {entry.title}
@@ -86,7 +86,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                           <ChevronDown
                             className="h-4 w-4 shrink-0 transition-transform duration-300"
                             style={{
-                              color: "rgba(74, 16, 40, 0.35)",
+                              color: "color-mix(in srgb, var(--color-bauhaus-blue) 35%, transparent)",
                               transform: isOpen
                                 ? "rotate(180deg)"
                                 : "rotate(0deg)",
@@ -112,12 +112,12 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                           <div
                             className="border-l-2 pl-4 sm:pl-6 py-2"
                             style={{
-                              borderColor: "rgba(74, 16, 40, 0.15)",
+                              borderColor: "color-mix(in srgb, var(--color-bauhaus-blue) 15%, transparent)",
                             }}
                           >
                             <p
                               className="text-xs sm:text-sm leading-relaxed"
-                              style={{ color: "rgba(74, 16, 40, 0.65)" }}
+                              style={{ color: "color-mix(in srgb, var(--color-bauhaus-blue) 65%, transparent)" }}
                             >
                               {entry.description}
                             </p>
@@ -130,7 +130,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                       <div
                         className="hidden sm:block ml-[60px] h-px"
                         style={{
-                          backgroundColor: "rgba(74, 16, 40, 0.08)",
+                          backgroundColor: "color-mix(in srgb, var(--color-bauhaus-ochre) 8%, transparent)",
                         }}
                       />
                     )}
