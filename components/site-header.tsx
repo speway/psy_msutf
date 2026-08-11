@@ -9,7 +9,6 @@ import {
   ChevronDown,
   Sun,
   Moon,
-  Palette,
   Contrast,
   Check,
 } from "lucide-react";
@@ -21,10 +20,8 @@ import { getTranslations, localizeHref, useLangFromPath } from "@/lib/i18n";
 const DESKTOP_VISIBLE_COUNT = 5;
 
 const MOBILE_THEMES = [
-  { id: "academic", label: "Академическая", icon: Sun },
-  { id: "bauhaus", label: "Баухаус", icon: Palette },
-  { id: "glamour-archive", label: "Гламурный архив", icon: Moon },
-  { id: "night-archive", label: "Ночной архив", icon: Moon },
+  { id: "academic", label: "Светлая", icon: Sun },
+  { id: "bauhaus", label: "Ночная", icon: Moon },
   { id: "high-contrast", label: "Высокий контраст", icon: Contrast },
 ] as const;
 
@@ -212,34 +209,26 @@ export function SiteHeader() {
     <>
       <header
         ref={headerRef}
-        className="sticky top-0 z-50 w-full h-[72px] bg-background/80 backdrop-blur-md border-b-2 border-border"
+        className="site-header sticky top-0 z-50 w-full h-[76px]"
       >
-        <div className="container mx-auto px-4 h-full flex items-center justify-between gap-4">
+        <div className="container site-header-inner h-full flex items-center justify-between gap-4">
           <Link
             href={localizeHref("/", lang)}
-            className="flex items-center gap-3 shrink-0 no-underline"
+            className="brand-lockup flex items-center gap-3 shrink-0 no-underline"
           >
-            <div className="w-[44px] h-[44px] rounded-[6px] bg-bauhaus-ochre/10 flex items-center justify-center shrink-0">
-              <span
-                className="text-[28px] font-light text-bauhaus-ochre leading-none"
-                aria-hidden="true"
-              >
-                Ψ
-              </span>
+            <div className="brand-mark" aria-hidden="true">
+              <span>Ψ</span>
+              <i />
             </div>
-            <div className="flex flex-col">
-              <span className="text-[14px] font-extrabold leading-tight text-foreground">
-                {t.nav.shortTitle}
-              </span>
-              <span className="text-[11px] font-semibold text-muted-foreground leading-tight">
-                {t.nav.subtitle}
-              </span>
+            <div className="brand-copy flex flex-col">
+              <span className="brand-title">{t.nav.shortTitle}</span>
+              <span className="brand-subtitle">{t.nav.subtitle}</span>
             </div>
           </Link>
 
           <nav
             aria-label={t.nav.menu}
-            className="hidden xl:flex items-center justify-center flex-1 gap-1"
+            className="site-nav hidden xl:flex items-center justify-center flex-1 gap-1"
           >
             {visibleItems.map((link) => (
               <Link
@@ -334,7 +323,7 @@ export function SiteHeader() {
                 href="https://t.me/psy_msutf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-2.5 py-1 text-[0.65rem] font-bold rounded-[4px] border-2 border-bauhaus-ochre/60 text-bauhaus-ochre hover:bg-bauhaus-ochre/10 transition-colors duration-200 min-h-[34px]"
+                className="telegram-chip inline-flex items-center gap-1 min-h-[38px]"
               >
                 <Send className="h-3 w-3" aria-hidden="true" />
                 {t.nav.telegram}
@@ -343,7 +332,7 @@ export function SiteHeader() {
             <button
               ref={burgerRef}
               onClick={() => setIsMobileMenuOpen((v) => !v)}
-              className="xl:hidden flex h-11 w-11 items-center justify-center rounded-[4px] border-2 border-border hover:border-bauhaus-ochre/60 hover:bg-accent/10 transition-all duration-200"
+              className="mobile-menu-trigger xl:hidden flex h-11 w-11 items-center justify-center"
               aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -374,7 +363,7 @@ export function SiteHeader() {
       {isMobileMenuOpen && (
         <>
           <div
-            className="fixed inset-0 top-[72px] z-40 bg-black/50 xl:hidden"
+            className="site-mobile-overlay fixed inset-0 top-[76px] z-40 xl:hidden"
             onClick={closeMobileMenu}
             aria-hidden="true"
           />
@@ -384,7 +373,7 @@ export function SiteHeader() {
             ref={menuRef}
             role="menu"
             aria-label={t.nav.menu}
-            className="fixed left-0 right-0 top-[72px] z-[999] max-h-[calc(100dvh-72px)] overflow-y-auto border-b-2 border-border bg-card shadow-lg xl:hidden"
+            className="site-mobile-menu fixed left-0 right-0 top-[76px] z-[999] max-h-[calc(100dvh-76px)] overflow-y-auto xl:hidden"
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {NAV_ITEMS.map((link) => (

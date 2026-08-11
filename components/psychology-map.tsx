@@ -37,11 +37,11 @@ const SVG_LINES = [
 ];
 
 const BAUHAUS_COLORS = [
-  { hex: "#4a1028" },
-  { hex: "#2c7a7b" },
-  { hex: "#276749" },
-  { hex: "#553c9a" },
-  { hex: "#9b2c2c" },
+  { hex: "#087f76" },
+  { hex: "#087ea4" },
+  { hex: "#5f8f2e" },
+  { hex: "#506ac7" },
+  { hex: "#0c5c6b" },
 ];
 
 export function PsychologyMap({

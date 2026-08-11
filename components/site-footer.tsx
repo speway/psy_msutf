@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getTranslations, useLangFromPath } from "@/lib/i18n";
 import { PsiDecor } from "@/components/psi-decor";
+import { ArrowUpRight } from "lucide-react";
 
 interface SiteFooterProps {
   lang?: string;
@@ -14,32 +15,34 @@ export function SiteFooter({ lang }: SiteFooterProps) {
   const pathLang = useLangFromPath(pathname);
   const currentLang = lang || pathLang;
   const t = getTranslations(currentLang);
+  const labsLabel =
+    currentLang === "en"
+      ? "Learning labs"
+      : currentLang === "uz"
+        ? "O'quv laboratoriyalari"
+        : "Учебные лаборатории";
 
   const mid = Math.ceil(t.footer.links.length / 2);
 
   return (
-    <footer
-      id="contacts"
-      className="border-t-2 border-bauhaus-blue scroll-mt-[72px] lg:scroll-mt-24"
-    >
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-4">
-          <div>
-            <h3 className="text-lg font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
-              <PsiDecor className="text-xl" />
-              {t.appName}
-            </h3>
-            <p className="text-xs text-muted-foreground leading-relaxed max-w-xs">
-              {t.footer.description}
-            </p>
+    <footer id="contacts" className="site-footer scroll-mt-[76px]">
+      <div className="container footer-shell">
+        <div className="footer-brand-row">
+          <div className="footer-brand-mark" aria-hidden="true">
+            <PsiDecor className="text-4xl" />
           </div>
-
           <div>
-            <h3 className="text-lg font-bold uppercase tracking-wider mb-3">
-              {t.footer.linksLabel}
-            </h3>
-            <nav className="flex flex-col gap-1.5 text-xs text-muted-foreground">
-              <ul className="flex flex-col gap-1.5">
+            <h2>{t.appName}</h2>
+            <p>{t.footer.description}</p>
+          </div>
+          <span className="footer-edition">TF MSU / 2026</span>
+        </div>
+
+        <div className="footer-grid">
+          <div>
+            <h3>{t.footer.linksLabel}</h3>
+            <nav>
+              <ul>
                 {t.footer.links.slice(0, mid).map((link) =>
                   link.external ? (
                     <li key={link.label}>
@@ -47,19 +50,14 @@ export function SiteFooter({ lang }: SiteFooterProps) {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline hover:text-foreground transition-colors inline-flex items-center min-h-[44px]"
                       >
                         {link.label}
+                        <ArrowUpRight />
                       </a>
                     </li>
                   ) : (
                     <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="underline hover:text-foreground transition-colors inline-flex items-center min-h-[44px]"
-                      >
-                        {link.label}
-                      </Link>
+                      <Link href={link.href}>{link.label}</Link>
                     </li>
                   )
                 )}
@@ -68,11 +66,9 @@ export function SiteFooter({ lang }: SiteFooterProps) {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold uppercase tracking-wider mb-3">
-              {t.footer.materialsLabel}
-            </h3>
-            <nav className="flex flex-col gap-1.5 text-xs text-muted-foreground">
-              <ul className="flex flex-col gap-1.5">
+            <h3>{t.footer.materialsLabel}</h3>
+            <nav>
+              <ul>
                 {t.footer.links.slice(mid).map((link) =>
                   link.external ? (
                     <li key={link.label}>
@@ -80,19 +76,14 @@ export function SiteFooter({ lang }: SiteFooterProps) {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline hover:text-foreground transition-colors inline-flex items-center min-h-[44px]"
                       >
                         {link.label}
+                        <ArrowUpRight />
                       </a>
                     </li>
                   ) : (
                     <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="underline hover:text-foreground transition-colors inline-flex items-center min-h-[44px]"
-                      >
-                        {link.label}
-                      </Link>
+                      <Link href={link.href}>{link.label}</Link>
                     </li>
                   )
                 )}
@@ -101,24 +92,50 @@ export function SiteFooter({ lang }: SiteFooterProps) {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold uppercase tracking-wider mb-3">
-              {t.nav.contacts}
-            </h3>
-            <div className="flex flex-col gap-3 text-xs text-muted-foreground">
-              <p className="leading-relaxed">{t.footer.address}</p>
+            <h3>{labsLabel}</h3>
+            <nav>
+              <ul>
+                <li>
+                  <a
+                    href="https://psy-stat-lab.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    StatLab
+                    <ArrowUpRight />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://psy-case-trainer.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Case Trainer
+                    <ArrowUpRight />
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div>
+            <h3>{t.nav.contacts}</h3>
+            <div className="footer-contact">
+              <p>{t.footer.address}</p>
               <a
                 href={t.footer.telegramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-foreground transition-colors inline-flex items-center min-h-[44px]"
               >
                 {t.footer.telegram}
+                <ArrowUpRight />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-border pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
+        <div className="footer-bottom">
           <span>{t.footer.copyright}</span>
           <span>
             {t.footer.by}{" "}
@@ -126,7 +143,6 @@ export function SiteFooter({ lang }: SiteFooterProps) {
               href="https://t.me/speway"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:text-foreground transition-colors inline-flex items-center min-h-[44px]"
             >
               spw
             </a>

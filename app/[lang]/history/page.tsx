@@ -13,7 +13,7 @@ interface Props {
   params: Promise<{ lang: string }>;
 }
 
-const BURGUNDY = "#4A1028";
+const BURGUNDY = "var(--color-bauhaus-blue)";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
@@ -84,7 +84,7 @@ export default async function LangHistoryPage({ params }: Props) {
 
       <AnimateOnScroll
         as="section"
-        className="relative border-b-2 border-[#4A1028]/20 scroll-mt-[72px] lg:scroll-mt-24"
+        className="relative border-b-2 border-bauhaus-blue/20 scroll-mt-[76px] lg:scroll-mt-24"
         direction="up"
       >
         <div className="container mx-auto px-4 pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12">
@@ -92,9 +92,11 @@ export default async function LangHistoryPage({ params }: Props) {
             <div
               className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2"
               style={{
-                borderColor: "rgba(74, 16, 40, 0.3)",
+                borderColor:
+                  "color-mix(in srgb, var(--color-bauhaus-blue) 30%, transparent)",
                 color: BURGUNDY,
-                backgroundColor: "rgba(74, 16, 40, 0.05)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--color-bauhaus-ochre) 6%, transparent)",
               }}
             >
               <Calendar className="h-3 w-3" />
@@ -187,7 +189,10 @@ export default async function LangHistoryPage({ params }: Props) {
                       </h3>
                       <p
                         className="text-xs sm:text-sm leading-relaxed"
-                        style={{ color: "rgba(74, 16, 40, 0.65)" }}
+                        style={{
+                          color:
+                            "color-mix(in srgb, var(--color-bauhaus-blue) 65%, transparent)",
+                        }}
                       >
                         {item.description}
                       </p>
