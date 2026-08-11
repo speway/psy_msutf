@@ -167,13 +167,10 @@ export function BauhausCover({
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full p-6 text-center">
         <div className="max-w-[90%]">
           <h3
-            className={`text-lg font-bold leading-snug line-clamp-2 ${colors.text}`}
+            className={`text-sm sm:text-base font-semibold leading-snug text-balance ${colors.text}`}
           >
             {displayTitle}
           </h3>
-          <div
-            className={`mt-4 mx-auto w-16 h-0.5 opacity-40 ${colors.text}`}
-          />
         </div>
       </div>
     </div>

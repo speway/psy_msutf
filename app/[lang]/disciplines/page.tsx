@@ -52,7 +52,7 @@ export default async function LangDisciplinesPage({ params }: Props) {
   const t = getTranslations(lang);
 
   return (
-    <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 ">
+    <div className="page-disciplines relative animate-in fade-in slide-in-from-bottom-4 duration-500">
       <BauhausBackground variant="disciplines" />
 
       <AnimateOnScroll
@@ -70,11 +70,11 @@ export default async function LangDisciplinesPage({ params }: Props) {
                   ? "Curriculum"
                   : "Учебный план"}
             </div>
-            <h1 className="text-4xl sm:text-5xl font-black leading-[1.05] tracking-tighter uppercase text-bauhaus-blue">
+            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight text-bauhaus-blue">
               {t.disciplinesUI.title}
             </h1>
             <div className="mx-auto mt-4 h-1 w-16 bg-bauhaus-blue" />
-            <p className="mt-4 mx-auto max-w-lg text-sm text-bauhaus-blue/70">
+            <p className="mt-4 mx-auto max-w-xl text-base text-muted-foreground leading-relaxed">
               {t.disciplinesUI.description}
             </p>
           </div>

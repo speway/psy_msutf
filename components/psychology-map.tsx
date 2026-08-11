@@ -39,8 +39,8 @@ const SVG_LINES = [
 const BAUHAUS_COLORS = [
   { hex: "#087f76" },
   { hex: "#087ea4" },
-  { hex: "#5f8f2e" },
-  { hex: "#506ac7" },
+  { hex: "#0daf9a" },
+  { hex: "#54dac7" },
   { hex: "#0c5c6b" },
 ];
 
@@ -55,7 +55,7 @@ export function PsychologyMap({
       <div className="container mx-auto px-4 py-10 sm:py-20 scroll-mt-[72px] lg:scroll-mt-24">
         <div className="max-w-[720px] mx-auto">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-xl sm:text-2xl font-black uppercase tracking-widest text-bauhaus-blue">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-bauhaus-blue">
               {heading}
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground/72 mt-2">
@@ -128,7 +128,7 @@ export function PsychologyMap({
                   >
                     <Link
                       href={localizeHref(node.href, locale)}
-                      className="map-node group relative z-10 block"
+                      className="map-node group relative z-10 block no-underline"
                       tabIndex={0}
                     >
                       <div
@@ -138,7 +138,7 @@ export function PsychologyMap({
                           backgroundColor: `${color.hex}0D`,
                         }}
                       >
-                        <span className="text-sm font-bold uppercase tracking-wider text-center transition-colors duration-300 group-hover:text-bauhaus-ochre">
+                      <span className="text-sm font-semibold tracking-wide text-center transition-colors duration-300 group-hover:text-bauhaus-ochre">
                           {node.label}
                         </span>
                       </div>
@@ -157,7 +157,7 @@ export function PsychologyMap({
                 <Link
                   key={node.label}
                   href={localizeHref(node.href, locale)}
-                  className="flex flex-col justify-center gap-1 bauhaus-card bauhaus-card-hover px-4 py-3 min-h-[72px]"
+                  className="flex flex-col justify-center gap-1 bauhaus-card bauhaus-card-hover px-4 py-3 min-h-[72px] no-underline"
                   style={{
                     borderLeftColor: `${color.hex}60`,
                     borderLeftWidth: 3,

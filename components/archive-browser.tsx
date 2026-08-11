@@ -64,7 +64,7 @@ export function ArchiveBrowser({
             <Link
               key={item.title}
               href={hrefs[index] || "/"}
-              className="group block bauhaus-card bauhaus-card-hover p-5"
+              className="group block bauhaus-card bauhaus-card-hover p-5 no-underline"
             >
               <div className="flex items-start gap-4">
                 {Icon && (
@@ -73,10 +73,10 @@ export function ArchiveBrowser({
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold uppercase tracking-wider group-hover:text-bauhaus-ochre transition-colors">
+                  <h3 className="text-lg font-semibold tracking-normal group-hover:text-bauhaus-ochre transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed line-clamp-2">
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
                     {item.description}
                   </p>
                   <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-bauhaus-ochre group-hover:gap-2.5 transition-all">

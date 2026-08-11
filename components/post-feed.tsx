@@ -99,7 +99,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
 
   return (
     <>
-      <div className="flex items-center gap-4 mb-8">
+      <div className="post-feed-heading flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
         <div
           className="bauhaus-angle-full relative w-10 h-10 hidden md:block flex-shrink-0"
           aria-hidden="true"
@@ -117,10 +117,10 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
             </span>
           )}
         </h2>
-        <div className="flex-1 h-1 bg-bauhaus-blue" aria-hidden="true" />
+        <div className="hidden sm:block flex-1 h-px bg-bauhaus-blue/25" aria-hidden="true" />
         <button
           onClick={() => setCompactView((v) => !v)}
-          className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue hover:bg-bauhaus-blue/5 hover:border-bauhaus-blue transition-colors min-h-[44px] flex-shrink-0"
+          className="flex w-full sm:w-auto items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue hover:bg-bauhaus-blue/5 hover:border-bauhaus-blue transition-colors min-h-[44px] flex-shrink-0"
           aria-label={
             compactView ? t.publications.normalView : t.publications.compactView
           }
@@ -148,7 +148,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
               aria-selected={!activeRubric}
               className={`px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 transition-all duration-300 ease-out flex-shrink-0 min-h-[44px] whitespace-nowrap snap-start ${
                 !activeRubric
-                  ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[inset_0_-3px_0_var(--color-bauhaus-ochre)]"
+                  ? "bg-bauhaus-blue text-white border-bauhaus-blue"
                   : "bg-transparent text-bauhaus-blue border-bauhaus-blue/30 hover:border-bauhaus-blue hover:bg-bauhaus-blue/5"
               }`}
             >
@@ -168,7 +168,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
                   aria-selected={activeRubric === rubric}
                   className={`px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 transition-all duration-300 ease-out flex-shrink-0 min-h-[44px] whitespace-nowrap snap-start ${
                     activeRubric === rubric
-                      ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[inset_0_-3px_0_var(--color-bauhaus-ochre)]"
+                      ? "bg-bauhaus-blue text-white border-bauhaus-blue"
                       : "bg-transparent text-bauhaus-blue border-bauhaus-blue/30 hover:border-bauhaus-blue hover:bg-bauhaus-blue/5"
                   }`}
                 >
@@ -309,7 +309,7 @@ function PostCard({
       <Link
         href={`/posts/${post.id}`}
         onClick={handleClick}
-        className="block h-full"
+        className="block h-full no-underline"
         aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
       >
         <article
@@ -339,7 +339,7 @@ function PostCard({
               </span>
             )}
 
-            <h3 className="text-lg font-bold leading-relaxed mb-2 group-hover:text-bauhaus-ochre transition-colors duration-300 line-clamp-2">
+            <h3 className="text-lg font-semibold leading-snug mb-2 text-balance group-hover:text-bauhaus-ochre transition-colors duration-300">
               {post.cleanTitle}
             </h3>
 
@@ -383,7 +383,7 @@ function CompactPostCard({ post, t, lang }: CompactPostCardProps) {
   return (
     <Link
       href={`/posts/${post.id}`}
-      className="block"
+      className="block no-underline"
       aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
     >
       <div className="group border-2 border-border/60 hover:border-bauhaus-ochre/30 hover:bg-bauhaus-blue/[0.02] transition-all duration-200 px-4 py-3 flex items-center gap-4 min-h-[56px]">

@@ -44,7 +44,7 @@ export default async function LangPublicationsPage({ params }: Props) {
   );
 
   return (
-    <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 ">
+    <div className="page-publications relative animate-in fade-in slide-in-from-bottom-4 duration-500">
       <BauhausBackground variant="publications" />
 
       <AnimateOnScroll
@@ -57,7 +57,7 @@ export default async function LangPublicationsPage({ params }: Props) {
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue bg-bauhaus-blue/5 w-fit">
               {t.publications.badge}
             </div>
-            <h1 className="text-4xl sm:text-5xl font-black leading-[1.05] tracking-tighter uppercase">
+            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight">
               {t.publications.title}
             </h1>
             <div className="mt-4 h-1 w-24 bg-bauhaus-blue" />
@@ -67,7 +67,7 @@ export default async function LangPublicationsPage({ params }: Props) {
             <div className="mt-4">
               <Link
                 href={localizeHref("/", lang)}
-                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground hover:text-bauhaus-blue transition-colors min-h-[44px]"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-bauhaus-blue transition-colors min-h-[44px] no-underline"
               >
                 {t.publications.back}
               </Link>

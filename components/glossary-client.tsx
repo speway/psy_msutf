@@ -145,7 +145,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
     sortAlphabetical;
 
   return (
-    <>
+    <div className="glossary-interface">
       {/* Term of the day banner */}
       {showTermOfDay && (
         <div className="max-w-[720px] mx-auto mb-8 border-2 border-bauhaus-ochre/30 bg-bauhaus-ochre/[0.03] p-4 sm:p-5 relative">
@@ -162,15 +162,15 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-bauhaus-ochre">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-bauhaus-ochre">
                   {t.termOfDay}
                 </span>
               </div>
-              <h3 className="text-lg font-bold uppercase tracking-tight text-bauhaus-blue">
+              <h3 className="text-xl font-semibold tracking-tight text-bauhaus-blue">
                 {termOfDay.title}
               </h3>
               <div className="h-px w-8 bg-bauhaus-ochre/30 my-2" />
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-[15px] text-muted-foreground leading-relaxed">
                 {termOfDay.shortDefinition}
               </p>
             </div>
@@ -219,7 +219,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
             aria-pressed={!activeLetter}
             className={`px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider border transition-colors shrink-0 min-h-[44px] ${
               !activeLetter
-                ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(59,130,246,0.3)]"
+                ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(13,175,154,0.22)]"
                 : "border-bauhaus-blue/20 text-bauhaus-blue/60 hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent"
             }`}
           >
@@ -236,7 +236,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
               aria-pressed={activeLetter === letter}
               className={`w-7 h-7 text-[11px] font-bold border transition-colors shrink-0 ${
                 activeLetter === letter
-                  ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(59,130,246,0.3)]"
+                  ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(13,175,154,0.22)]"
                   : "border-bauhaus-blue/20 text-bauhaus-blue/60 hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent"
               }`}
             >
@@ -280,7 +280,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
             aria-pressed={sortAlphabetical}
             className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border transition-colors min-h-[44px] ${
               sortAlphabetical
-                ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(59,130,246,0.3)]"
+                ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(13,175,154,0.22)]"
                 : "border-bauhaus-blue/15 text-bauhaus-blue/50 hover:border-bauhaus-blue/30 hover:text-bauhaus-blue"
             }`}
           >
@@ -311,7 +311,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
                 aria-pressed={activeCategories.includes(cat)}
                 className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border transition-colors min-h-[44px] ${
                   activeCategories.includes(cat)
-                    ? "bg-bauhaus-ochre text-white border-bauhaus-ochre shadow-[0_0_0_2px_rgba(180,130,50,0.3)]"
+                    ? "bg-bauhaus-ochre text-white border-bauhaus-ochre shadow-[0_0_0_2px_rgba(198,240,90,0.24)]"
                     : "border-bauhaus-blue/15 text-bauhaus-blue/50 hover:border-bauhaus-blue/30 hover:text-bauhaus-blue bg-transparent"
                 }`}
               >
@@ -334,7 +334,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
           </p>
           <button
             onClick={clearAllFilters}
-            className="text-[10px] font-bold uppercase tracking-wider text-bauhaus-ochre hover:underline flex items-center gap-1"
+            className="text-[11px] font-semibold uppercase tracking-wide text-bauhaus-ochre no-underline flex items-center gap-1"
           >
             <RotateCcw className="h-2.5 w-2.5" aria-hidden="true" />
             {t.resetFilters}
@@ -370,12 +370,12 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
                 className="bauhaus-card bauhaus-card-hover p-4 sm:p-5"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-bold uppercase tracking-tight text-bauhaus-blue">
+                  <h3 className="text-xl font-semibold tracking-tight text-bauhaus-blue">
                     {query ? highlightText(item.title, query) : item.title}
                   </h3>
                 </div>
                 <div className="h-px w-10 bg-bauhaus-blue/15 my-2" />
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-[15px] text-muted-foreground leading-relaxed">
                   {query
                     ? highlightText(item.shortDefinition, query)
                     : item.shortDefinition}
@@ -504,7 +504,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
                                 setRandomTerm(null);
                                 window.scrollTo({ top: 0, behavior: "smooth" });
                               }}
-                              className="text-xs text-left text-bauhaus-blue/70 hover:text-bauhaus-blue underline-offset-2 hover:underline transition-colors"
+                              className="text-sm text-left text-bauhaus-blue/70 hover:text-bauhaus-blue no-underline transition-colors"
                             >
                               {termTitle}
                             </button>
@@ -524,6 +524,6 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }

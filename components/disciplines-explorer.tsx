@@ -18,6 +18,17 @@ interface DisciplinesExplorerProps {
   disciplineNotice?: string;
 }
 
+function getCountedForm(count: number, forms: [string, string, string]) {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+
+  if (mod10 === 1 && mod100 !== 11) return forms[0];
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) {
+    return forms[1];
+  }
+  return forms[2];
+}
+
 export function DisciplinesExplorer({
   t,
   disciplineNotice,
@@ -70,7 +81,7 @@ export function DisciplinesExplorer({
   const hasActiveFilters = query.trim().length > 0;
 
   return (
-    <div className="max-w-[960px] mx-auto space-y-8">
+    <div className="disciplines-explorer max-w-[1040px] mx-auto space-y-8">
       {showLangNotice && disciplineNotice && (
         <div className="flex items-start gap-2.5 p-4 border-2 border-border/60 bg-muted/30 text-sm text-muted-foreground">
           <Languages className="h-4 w-4 shrink-0 text-bauhaus-ochre mt-0.5" />
@@ -86,7 +97,7 @@ export function DisciplinesExplorer({
               key={opt.value}
               onClick={() => handleLevelChange(opt.value)}
               aria-pressed={isSelected}
-              className={`inline-flex items-center justify-center gap-2.5 px-6 py-0 text-sm font-bold uppercase tracking-wider border-2 h-12 rounded-md transition-all duration-300 ease-out ${
+              className={`inline-flex items-center justify-center gap-2.5 px-6 py-0 text-sm font-semibold tracking-wide border-2 h-12 rounded-md transition-all duration-300 ease-out ${
                 isSelected
                   ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-bauhaus"
                   : "border-border/60 text-muted-foreground hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent hover:bg-muted/30"
@@ -104,7 +115,7 @@ export function DisciplinesExplorer({
       </div>
 
       <div className="flex flex-col items-center gap-3">
-        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+        <span className="text-sm font-semibold tracking-wide text-muted-foreground">
           {t.course}:
         </span>
         <div className="grid grid-cols-2 sm:flex gap-3">
@@ -118,7 +129,7 @@ export function DisciplinesExplorer({
                   setQuery("");
                 }}
                 aria-pressed={isSelected}
-                className={`px-6 py-0 text-sm font-bold tracking-wider border-2 h-12 rounded-md transition-all duration-300 ease-out ${
+                className={`px-6 py-0 text-sm font-semibold tracking-wide border-2 h-12 rounded-md transition-all duration-300 ease-out ${
                   isSelected
                     ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-bauhaus"
                     : "border-border/60 text-muted-foreground hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent hover:bg-muted/30"
@@ -200,15 +211,15 @@ export function DisciplinesExplorer({
               </p>
             </div>
           </div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <p className="text-sm font-medium tracking-wide text-muted-foreground">
             {course} {t.course} &middot; {displayDisciplines.length}{" "}
-            {t.subjects}
+            {getCountedForm(displayDisciplines.length, t.subjectForms)}
           </p>
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {displayDisciplines.map((discipline, index) => (
               <li
                 key={`${discipline}-${index}`}
-                className="flex items-center justify-center min-w-[180px] border-2 border-border/40 bg-card px-4 py-3.5 text-sm font-semibold text-foreground leading-relaxed tracking-wide text-center transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-bauhaus hover:border-bauhaus-blue/20 animate-in duration-700 slide-in-from-bottom-6 fill-mode-both"
+                className="flex items-center justify-center min-w-[180px] border-2 border-border/40 bg-card px-4 py-3.5 text-[15px] font-medium text-foreground leading-snug text-center transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-bauhaus hover:border-bauhaus-blue/20 animate-in duration-700 slide-in-from-bottom-6 fill-mode-both"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <span className="break-words">{discipline}</span>

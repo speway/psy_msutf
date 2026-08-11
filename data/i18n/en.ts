@@ -298,7 +298,7 @@ export const en: SiteTranslation = {
     nothingFound: "Nothing found",
     reset: "Reset",
     tryChanging: "Try changing your search query",
-    subjects: "disciplines",
+    subjectForms: ["discipline", "disciplines", "disciplines"],
     foundCount: "Disciplines found",
   },
   contactsUI: {
