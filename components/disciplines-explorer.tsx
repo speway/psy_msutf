@@ -89,7 +89,7 @@ export function DisciplinesExplorer({
         </div>
       )}
 
-      <div className="grid grid-cols-2 sm:flex sm:justify-center w-full sm:w-fit mx-auto gap-4">
+      <div className="discipline-level-switch grid grid-cols-2 sm:flex sm:justify-center w-full sm:w-fit mx-auto gap-4">
         {levelOptions.map((opt) => {
           const isSelected = level === opt.value;
           return (
@@ -97,7 +97,7 @@ export function DisciplinesExplorer({
               key={opt.value}
               onClick={() => handleLevelChange(opt.value)}
               aria-pressed={isSelected}
-              className={`inline-flex items-center justify-center gap-2.5 px-6 py-0 text-sm font-semibold tracking-wide border-2 h-12 rounded-md transition-all duration-300 ease-out ${
+              className={`discipline-level-button inline-flex min-w-0 items-center justify-center gap-2.5 px-6 py-2 text-sm font-semibold tracking-wide text-center leading-tight border-2 min-h-12 rounded-md transition-all duration-300 ease-out ${
                 isSelected
                   ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-bauhaus"
                   : "border-border/60 text-muted-foreground hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent hover:bg-muted/30"
@@ -118,7 +118,7 @@ export function DisciplinesExplorer({
         <span className="text-sm font-semibold tracking-wide text-muted-foreground">
           {t.course}:
         </span>
-        <div className="grid grid-cols-2 sm:flex gap-3">
+        <div className="discipline-course-switch grid grid-cols-2 sm:flex gap-3">
           {courseOptions.map((c) => {
             const isSelected = course === c;
             return (
@@ -129,7 +129,7 @@ export function DisciplinesExplorer({
                   setQuery("");
                 }}
                 aria-pressed={isSelected}
-                className={`px-6 py-0 text-sm font-semibold tracking-wide border-2 h-12 rounded-md transition-all duration-300 ease-out ${
+                className={`min-w-0 px-6 py-2 text-sm font-semibold tracking-wide border-2 min-h-12 rounded-md transition-all duration-300 ease-out ${
                   isSelected
                     ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-bauhaus"
                     : "border-border/60 text-muted-foreground hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent hover:bg-muted/30"
@@ -196,12 +196,12 @@ export function DisciplinesExplorer({
 
       {currentProgram && displayDisciplines.length > 0 && (
         <div className="space-y-4">
-          <div className="flex items-center gap-2.5 pb-3 border-b border-border/40">
+          <div className="discipline-program-heading flex min-w-0 items-start gap-2.5 pb-3 border-b border-border/40">
             <BookOpen
               className="h-5 w-5 text-bauhaus-ochre shrink-0"
               aria-hidden="true"
             />
-            <div>
+            <div className="min-w-0">
               <h2 className="text-xl sm:text-2xl font-bold text-foreground">
                 {currentProgram.levelTitle}
               </h2>
@@ -219,7 +219,7 @@ export function DisciplinesExplorer({
             {displayDisciplines.map((discipline, index) => (
               <li
                 key={`${discipline}-${index}`}
-                className="flex items-center justify-center min-w-[180px] border-2 border-border/40 bg-card px-4 py-3.5 text-[15px] font-medium text-foreground leading-snug text-center transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-bauhaus hover:border-bauhaus-blue/20 animate-in duration-700 slide-in-from-bottom-6 fill-mode-both"
+                className="flex min-w-0 items-center justify-center border-2 border-border/40 bg-card px-4 py-3.5 text-[15px] font-medium text-foreground leading-snug text-center transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-bauhaus hover:border-bauhaus-blue/20 animate-in duration-700 slide-in-from-bottom-6 fill-mode-both"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <span className="break-words">{discipline}</span>

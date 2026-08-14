@@ -117,7 +117,10 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
             </span>
           )}
         </h2>
-        <div className="hidden sm:block flex-1 h-px bg-bauhaus-blue/25" aria-hidden="true" />
+        <div
+          className="hidden sm:block flex-1 h-px bg-bauhaus-blue/25"
+          aria-hidden="true"
+        />
         <button
           onClick={() => setCompactView((v) => !v)}
           className="flex w-full sm:w-auto items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue hover:bg-bauhaus-blue/5 hover:border-bauhaus-blue transition-colors min-h-[44px] flex-shrink-0"
@@ -136,7 +139,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
       </div>
 
       <div
-        className="sticky top-16 z-20 bg-background/95 backdrop-blur-sm -mx-4 px-4 py-3 border-b border-border mb-6"
+        className="post-feed-tabs sticky top-[72px] z-20 bg-background/95 backdrop-blur-sm -mx-4 px-4 py-3 border-b border-border mb-6"
         role="tablist"
         aria-label={t.publications.rubric}
       >
@@ -212,7 +215,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
       </div>
 
       {activeRubric && (
-        <div className="flex items-center gap-2 mb-6">
+        <div className="post-feed-active-filter flex flex-wrap items-center gap-2 mb-6">
           <span className="text-sm text-muted-foreground">
             {t.publications.section}{" "}
             <strong>
@@ -386,7 +389,7 @@ function CompactPostCard({ post, t, lang }: CompactPostCardProps) {
       className="block no-underline"
       aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
     >
-      <div className="group border-2 border-border/60 hover:border-bauhaus-ochre/30 hover:bg-bauhaus-blue/[0.02] transition-all duration-200 px-4 py-3 flex items-center gap-4 min-h-[56px]">
+      <div className="compact-post-card group border-2 border-border/60 hover:border-bauhaus-ochre/30 hover:bg-bauhaus-blue/[0.02] transition-all duration-200 px-4 py-3 flex items-center gap-4 min-h-[56px]">
         {post.rubric && (
           <span
             className={`rubric-badge-${post.rubric} text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 border shrink-0 hidden sm:inline-block`}

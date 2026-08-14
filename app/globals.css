@@ -4558,6 +4558,583 @@ a[class*="border"] {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Responsive hardening: stable layouts from compact phones to small tablets.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --header-height: 72px;
+}
+
+:where(img, video, canvas) {
+  max-width: 100%;
+  height: auto;
+}
+
+#main-content :where(.flex, .grid) > * {
+  min-width: 0;
+}
+
+#main-content :where(p, li, dd, dt, a, button) {
+  overflow-wrap: break-word;
+}
+
+#main-content :where(input, select, textarea) {
+  max-width: 100%;
+}
+
+.site-header {
+  min-height: var(--header-height);
+}
+
+.site-header-inner {
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
+
+.site-mobile-menu {
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  overscroll-behavior: contain;
+}
+
+.post-feed-tabs [role="tab"],
+.glossary-interface [role="group"] button {
+  white-space: nowrap;
+}
+
+@media (width >= 700px) and (width < 1120px) {
+  .site-header-inner {
+    width: min(100% - 24px, 1280px);
+  }
+
+  .brand-lockup {
+    min-width: 0;
+  }
+
+  .brand-title {
+    max-width: min(44vw, 360px);
+  }
+}
+
+@media (width < 700px) {
+  html {
+    scroll-padding-top: calc(var(--header-height) + 12px);
+  }
+
+  body {
+    font-size: calc(1rem * var(--font-scale, 1));
+  }
+
+  .site-header-inner {
+    width: min(100% - 16px, 1280px);
+    gap: 8px;
+  }
+
+  .brand-lockup {
+    flex: 1 1 auto;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .brand-copy {
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .brand-mark span {
+    font-size: 24px;
+  }
+
+  .brand-title {
+    display: -webkit-box;
+    max-width: min(46vw, 190px);
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1.12;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .brand-subtitle {
+    max-width: min(46vw, 190px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-menu-trigger {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+
+  .site-mobile-menu > div {
+    width: 100%;
+  }
+
+  .site-mobile-menu a,
+  .site-mobile-menu button {
+    line-height: 1.3;
+  }
+
+  #main-content .container[class~="px-4"] {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  #main-content section[class*="scroll-mt"]::after {
+    top: -28px;
+    right: -18px;
+    width: 82px;
+    height: 82px;
+    border-width: 12px;
+  }
+
+  #main-content section[class*="scroll-mt"] h1,
+  .roadmap-page h1 {
+    max-width: 100%;
+    font-size: clamp(2.15rem, 10.5vw, 3.25rem) !important;
+    line-height: 1.02 !important;
+    overflow-wrap: break-word;
+  }
+
+  #main-content section[class*="scroll-mt"] h2,
+  .section-heading-row h2 {
+    font-size: clamp(1.9rem, 9vw, 2.8rem);
+    line-height: 1.04;
+  }
+
+  #main-content
+    section[class*="scroll-mt"]
+    :where(.inline-flex, [class*="w-fit"]) {
+    max-width: 100%;
+  }
+
+  #main-content
+    section[class*="scroll-mt"]
+    :where(.inline-flex, [class*="w-fit"])
+    > span {
+    min-width: 0;
+  }
+
+  .ecosystem-hero-inner {
+    padding-block: 38px 56px;
+  }
+
+  .signal-badge,
+  .hero-overline {
+    max-width: 100%;
+    line-height: 1.3;
+    white-space: normal;
+  }
+
+  .ecosystem-hero h1 {
+    font-size: clamp(2.75rem, 14.5vw, 4.5rem);
+    line-height: 0.92;
+    overflow-wrap: normal;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .action-primary,
+  .action-secondary,
+  .action-acid {
+    min-width: 0;
+    min-height: 48px;
+    padding-inline: 16px;
+    line-height: 1.25;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .hero-metrics {
+    margin-top: 34px;
+  }
+
+  .hero-metrics > div {
+    padding-top: 15px;
+  }
+
+  .ecosystem-console {
+    width: calc(100% - 4px);
+    margin-inline: 2px;
+  }
+
+  .console-head {
+    gap: 12px;
+  }
+
+  .console-head > span {
+    min-width: 0;
+    text-align: right;
+  }
+
+  .console-route-list a > span:nth-child(2) {
+    min-width: 0;
+  }
+
+  .console-route-list :where(b, small) {
+    overflow-wrap: break-word;
+  }
+
+  .home-index-strip span {
+    gap: 8px;
+    line-height: 1.25;
+  }
+
+  .section-heading-row {
+    margin-bottom: 30px;
+  }
+
+  .lab-card {
+    min-height: 350px;
+    padding: 22px;
+  }
+
+  .lab-icon {
+    margin-top: 56px;
+  }
+
+  .lab-card h3 {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    overflow-wrap: break-word;
+  }
+
+  .latest-card {
+    padding: 20px;
+  }
+
+  .contact-band h2 {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+    overflow-wrap: break-word;
+  }
+
+  .contact-band-inner {
+    padding: 30px 20px;
+  }
+
+  .footer-shell {
+    padding-top: 38px;
+  }
+
+  .footer-brand-row {
+    gap: 14px;
+  }
+
+  .footer-brand-row > div:nth-child(2) {
+    min-width: 0;
+  }
+
+  .footer-brand-row h2,
+  .footer-grid a,
+  .footer-contact p,
+  .footer-bottom {
+    overflow-wrap: anywhere;
+  }
+
+  .footer-grid {
+    padding-block: 34px;
+  }
+
+  .post-feed-heading {
+    align-items: stretch;
+  }
+
+  .post-feed-heading h2 {
+    flex: 1 1 180px;
+    min-width: 0;
+    font-size: clamp(1.55rem, 8vw, 2rem);
+  }
+
+  .post-feed-tabs {
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 16px;
+  }
+
+  .post-feed-tabs [role="tab"] {
+    min-height: 42px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .post-feed-active-filter > span {
+    flex: 1 1 180px;
+  }
+
+  .page-publications article > div:last-child > div:last-child {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+
+  .page-publications article > div:last-child > div:last-child > span {
+    margin-left: auto;
+  }
+
+  .compact-post-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .compact-post-card h3 {
+    display: -webkit-box;
+    font-size: 1rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .compact-post-card > span:last-child {
+    padding-inline: 6px;
+  }
+
+  .glossary-toolbar > button {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .glossary-filter-state > p {
+    flex: 1 1 170px;
+  }
+
+  .glossary-filter-state > button {
+    flex: 0 1 auto;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .glossary-interface .bauhaus-card {
+    padding: 16px;
+  }
+
+  .glossary-interface .bauhaus-card h3 {
+    font-size: 1.12rem;
+    overflow-wrap: break-word;
+  }
+
+  .glossary-interface details summary {
+    line-height: 1.35;
+  }
+
+  .discipline-level-switch {
+    gap: 10px;
+  }
+
+  .discipline-level-button {
+    width: 100%;
+    padding-inline: 8px;
+    gap: 6px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .discipline-level-button svg {
+    flex: 0 0 auto;
+  }
+
+  .discipline-course-switch {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .discipline-course-switch button {
+    width: 100%;
+    padding-inline: 12px;
+  }
+
+  .discipline-program-heading h2 {
+    font-size: 1.15rem;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+
+  .discipline-program-heading p {
+    overflow-wrap: anywhere;
+  }
+
+  .disciplines-explorer li {
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .roadmap-page > .container {
+    padding-top: 32px;
+  }
+
+  .roadmap-page .relative.space-y-6 {
+    gap: 16px;
+  }
+
+  .roadmap-page
+    > div
+    > div.relative.space-y-6
+    > div:not([aria-hidden="true"])
+    > div {
+    padding: 14px;
+  }
+
+  .roadmap-page h3 {
+    overflow-wrap: break-word;
+  }
+
+  .bauhaus-card :where(a[href^="mailto:"], a[href^="tel:"]) {
+    min-width: 0;
+  }
+
+  .bauhaus-card :where(a[href^="mailto:"], a[href^="tel:"]) > span:last-child {
+    min-width: 0;
+  }
+
+  .bauhaus-native-select {
+    max-width: min(100%, 240px);
+    font-size: 16px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  button,
+  [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (width < 440px) {
+  .brand-subtitle {
+    display: none;
+  }
+
+  .brand-title {
+    max-width: min(48vw, 150px);
+  }
+
+  .signal-badge {
+    align-items: flex-start;
+    font-size: 8px;
+  }
+
+  .signal-dot {
+    margin-top: 2px;
+    flex: 0 0 auto;
+  }
+
+  .hero-metrics span {
+    letter-spacing: 0.06em;
+  }
+
+  .glossary-toolbar {
+    align-items: stretch;
+  }
+
+  .glossary-toolbar > button:first-child {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .footer-brand-row {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .footer-brand-mark {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (width < 360px) {
+  .site-header-inner {
+    width: calc(100% - 12px);
+  }
+
+  .brand-lockup {
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .brand-title {
+    max-width: 145px;
+    font-size: 11px;
+  }
+
+  #main-content .container[class~="px-4"] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .ecosystem-hero h1 {
+    font-size: clamp(2.45rem, 14vw, 3.4rem);
+  }
+
+  .ecosystem-lead {
+    font-size: 14px;
+  }
+
+  .hero-metrics > div {
+    padding-right: 6px;
+  }
+
+  .ecosystem-console {
+    min-height: 424px;
+    padding: 10px;
+  }
+
+  .console-route-list a {
+    grid-template-columns: 34px minmax(0, 1fr) 14px;
+    gap: 8px;
+    padding-inline: 9px;
+  }
+
+  .route-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .lab-card,
+  .latest-card,
+  .glossary-interface .bauhaus-card {
+    padding: 14px;
+  }
+
+  .discipline-level-button {
+    font-size: 11px;
+  }
+}
+
+@media (height < 560px) and (width < 900px) {
+  .site-mobile-menu {
+    max-height: calc(100dvh - var(--header-height));
+  }
+
+  .site-mobile-menu > div:first-child {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .site-mobile-menu a,
+  .site-mobile-menu button {
+    min-height: 42px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-reveal {
     animation: none !important;
