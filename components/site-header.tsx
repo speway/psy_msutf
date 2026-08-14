@@ -209,12 +209,12 @@ export function SiteHeader() {
     <>
       <header
         ref={headerRef}
-        className="site-header sticky top-0 z-50 w-full h-[76px]"
+        className="site-header sticky top-0 z-50 w-full h-[72px]"
       >
-        <div className="container site-header-inner h-full flex items-center justify-between gap-4">
+        <div className="container site-header-inner h-full flex items-center justify-between gap-3">
           <Link
             href={localizeHref("/", lang)}
-            className="brand-lockup flex items-center gap-3 shrink-0 no-underline"
+            className="brand-lockup flex min-w-0 items-center gap-3 shrink no-underline"
           >
             <div className="brand-mark" aria-hidden="true">
               <span>Ψ</span>
@@ -363,7 +363,7 @@ export function SiteHeader() {
       {isMobileMenuOpen && (
         <>
           <div
-            className="site-mobile-overlay fixed inset-0 top-[76px] z-40 xl:hidden"
+            className="site-mobile-overlay fixed inset-0 top-[72px] z-40 xl:hidden"
             onClick={closeMobileMenu}
             aria-hidden="true"
           />
@@ -373,7 +373,7 @@ export function SiteHeader() {
             ref={menuRef}
             role="menu"
             aria-label={t.nav.menu}
-            className="site-mobile-menu fixed left-0 right-0 top-[76px] z-[999] max-h-[calc(100dvh-76px)] overflow-y-auto xl:hidden"
+            className="site-mobile-menu fixed left-0 right-0 top-[72px] z-[999] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain xl:hidden"
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {NAV_ITEMS.map((link) => (

@@ -27,8 +27,10 @@ export function ExtraContactsSection({ label }: { label: string }) {
                     className="flex items-center gap-3 text-sm text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[36px] rounded-sm px-1"
                   >
                     <Phone className="size-3.5 shrink-0 text-bauhaus-ochre/60" />
-                    <span className="font-medium">{contact.label}:</span>
-                    <span>{contact.value}</span>
+                    <span className="font-medium shrink-0">
+                      {contact.label}:
+                    </span>
+                    <span className="min-w-0 break-all">{contact.value}</span>
                   </a>
                 );
               }
@@ -40,8 +42,10 @@ export function ExtraContactsSection({ label }: { label: string }) {
                     className="flex items-center gap-3 text-sm text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[36px] rounded-sm px-1"
                   >
                     <Mail className="size-3.5 shrink-0 text-bauhaus-ochre/60" />
-                    <span className="font-medium">{contact.label}:</span>
-                    <span>{contact.value}</span>
+                    <span className="font-medium shrink-0">
+                      {contact.label}:
+                    </span>
+                    <span className="min-w-0 break-all">{contact.value}</span>
                   </a>
                 );
               }
@@ -54,8 +58,8 @@ export function ExtraContactsSection({ label }: { label: string }) {
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[36px] rounded-sm px-1"
                 >
                   <ExternalLink className="size-3.5 shrink-0 text-bauhaus-ochre/60" />
-                  <span className="font-medium">{contact.label}:</span>
-                  <span>{contact.value}</span>
+                  <span className="font-medium shrink-0">{contact.label}:</span>
+                  <span className="min-w-0 break-all">{contact.value}</span>
                 </a>
               );
             })}

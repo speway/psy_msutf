@@ -110,7 +110,7 @@ export function ContactCard({
                       <span className="font-medium shrink-0">
                         {extra.label}:
                       </span>
-                      <span className="break-words">{extra.value}</span>
+                      <span className="min-w-0 break-all">{extra.value}</span>
                     </a>
                   );
                 }
@@ -125,7 +125,7 @@ export function ContactCard({
                       <span className="font-medium shrink-0">
                         {extra.label}:
                       </span>
-                      <span className="break-words">{extra.value}</span>
+                      <span className="min-w-0 break-all">{extra.value}</span>
                     </a>
                   );
                 }
@@ -139,7 +139,7 @@ export function ContactCard({
                   >
                     <ExternalLink className="h-3 w-3 shrink-0" />
                     <span className="font-medium shrink-0">{extra.label}:</span>
-                    <span className="break-words">{extra.value}</span>
+                    <span className="min-w-0 break-all">{extra.value}</span>
                   </a>
                 );
               })}

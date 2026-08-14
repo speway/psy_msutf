@@ -248,7 +248,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
 
       {/* Category filters - collapsible */}
       <div className="mx-auto mb-6">
-        <div className="flex items-center gap-2">
+        <div className="glossary-toolbar flex flex-wrap items-center gap-2">
           <button
             onClick={() => setShowFilters(!showFilters)}
             aria-pressed={showFilters}
@@ -324,7 +324,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
 
       {/* Filter state info */}
       {hasActiveFilters && (
-        <div className="mx-auto mb-4 flex items-center justify-between">
+        <div className="glossary-filter-state mx-auto mb-4 flex flex-wrap items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
             {filteredTerms.length === 0
               ? t.nothingFound
@@ -464,10 +464,10 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
               >
                 <button
                   onClick={() => toggleCollectionExpanded(collection.id)}
-                  className="w-full flex items-center justify-between text-left"
+                  className="w-full min-w-0 flex items-center justify-between gap-3 text-left"
                   aria-expanded={isExpanded}
                 >
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="text-lg font-bold uppercase tracking-wider text-bauhaus-blue">
                       {title}
                     </h3>
