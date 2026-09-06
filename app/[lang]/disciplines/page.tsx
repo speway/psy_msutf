@@ -1,6 +1,5 @@
+import { SectionIntro } from "@/components/section-intro";
 import type { Metadata } from "next";
-import { BookOpen } from "lucide-react";
-import { BauhausBackground } from "@/components/bauhaus-background";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { DisciplinesExplorer } from "@/components/disciplines-explorer";
@@ -53,33 +52,13 @@ export default async function LangDisciplinesPage({ params }: Props) {
 
   return (
     <div className="page-disciplines relative animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <BauhausBackground variant="disciplines" />
-
-      <AnimateOnScroll
-        as="section"
-        className="relative border-b-2 border-bauhaus-blue/20 scroll-mt-[72px] lg:scroll-mt-24"
-        direction="up"
-      >
-        <div className="container mx-auto px-4 pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12">
-          <div className="max-w-[640px] mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue bg-bauhaus-blue/5">
-              <BookOpen className="h-3 w-3" />
-              {lang === "uz"
-                ? "O'quv reja"
-                : lang === "en"
-                  ? "Curriculum"
-                  : "Учебный план"}
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight text-bauhaus-blue">
-              {t.disciplinesUI.title}
-            </h1>
-            <div className="mx-auto mt-4 h-1 w-16 bg-bauhaus-blue" />
-            <p className="mt-4 mx-auto max-w-xl text-base text-muted-foreground leading-relaxed">
-              {t.disciplinesUI.description}
-            </p>
-          </div>
-        </div>
-      </AnimateOnScroll>
+      <SectionIntro
+        title={t.disciplinesUI.title}
+        description={t.disciplinesUI.description}
+        eyebrow={t.nav.disciplines}
+        number="03"
+        lang={lang}
+      />
 
       <AnimateOnScroll
         as="section"

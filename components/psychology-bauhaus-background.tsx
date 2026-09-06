@@ -41,7 +41,7 @@ export function PsychologyBauhausBackground() {
           style={{ zIndex: 0 }}
         >
           <span
-            className="block text-[28rem] font-black leading-none text-center select-none"
+            className="block text-[28rem] font-bold leading-none text-center select-none"
             style={{
               color: "var(--decor-secondary)",
               opacity: 0.07,

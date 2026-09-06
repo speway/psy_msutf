@@ -1,12 +1,6 @@
+import { SectionIntro } from "@/components/section-intro";
 import type { Metadata } from "next";
-import {
-  BookOpen,
-  GraduationCap,
-  FlaskConical,
-  Users,
-  BookMarked,
-} from "lucide-react";
-import { BauhausDecor } from "@/components/bauhaus-decor";
+import { BookOpen, GraduationCap, FlaskConical, Users } from "lucide-react";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { departmentPage, officialLinks } from "@/data";
@@ -101,29 +95,13 @@ export default async function LangDepartmentPage({ params }: Props) {
 
   return (
     <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 ">
-      <BauhausDecor />
-
-      <AnimateOnScroll
-        as="section"
-        className="relative border-b-2 border-bauhaus-blue scroll-mt-[72px] lg:scroll-mt-24"
-        direction="up"
-      >
-        <div className="container mx-auto px-4 pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12">
-          <div className="max-w-[720px] mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue bg-bauhaus-blue/5">
-              <BookMarked className="h-3 w-3" />
-              {badgeText}
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-black leading-[1.05] tracking-tighter uppercase text-bauhaus-blue">
-              {title}
-            </h1>
-            <div className="mx-auto mt-4 h-1 w-16 bg-bauhaus-blue" />
-            <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              {description}
-            </p>
-          </div>
-        </div>
-      </AnimateOnScroll>
+      <SectionIntro
+        title={title}
+        description={description}
+        eyebrow={badgeText}
+        number="05.3"
+        lang={lang}
+      />
 
       <AnimateOnScroll
         as="section"

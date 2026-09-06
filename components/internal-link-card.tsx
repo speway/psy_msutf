@@ -20,7 +20,7 @@ export function InternalLinkCard({
   return (
     <Link
       href={href}
-      className="group block no-underline border-2 border-border/80 bg-background/60 p-5 hover:border-bauhaus-ochre/30 hover:bg-background hover:-translate-y-0.5 transition-all duration-300"
+      className="internal-link-card group block no-underline border-2 border-border/80 bg-background/60 p-5 hover:border-bauhaus-ochre/30 hover:bg-background hover:-translate-y-0.5 transition-all duration-300"
     >
       <div className="flex items-start gap-4">
         {Icon && (
@@ -35,7 +35,7 @@ export function InternalLinkCard({
           <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
             {description}
           </p>
-          <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-bauhaus-ochre group-hover:gap-2.5 transition-all">
+          <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-bauhaus-ochre group-hover:gap-2.5 transition-all">
             {label}
             <ArrowRight className="h-3 w-3" />
           </span>

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getTranslations, useLangFromPath } from "@/lib/i18n";
-import { PsiDecor } from "@/components/psi-decor";
 import { ArrowUpRight } from "lucide-react";
 
 interface SiteFooterProps {
@@ -29,7 +28,7 @@ export function SiteFooter({ lang }: SiteFooterProps) {
       <div className="container footer-shell">
         <div className="footer-brand-row">
           <div className="footer-brand-mark" aria-hidden="true">
-            <PsiDecor className="text-4xl" />
+            <span className="footer-psi">Ψ</span>
           </div>
           <div>
             <h2>{t.appName}</h2>
@@ -111,7 +110,11 @@ export function SiteFooter({ lang }: SiteFooterProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Case Trainer
+                    {currentLang === "ru"
+                      ? "Тренажёр психолога"
+                      : currentLang === "uz"
+                        ? "Psixolog trenajyori"
+                        : "Case Trainer"}
                     <ArrowUpRight />
                   </a>
                 </li>

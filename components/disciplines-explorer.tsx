@@ -99,7 +99,7 @@ export function DisciplinesExplorer({
               aria-pressed={isSelected}
               className={`discipline-level-button inline-flex min-w-0 items-center justify-center gap-2.5 px-6 py-2 text-sm font-semibold tracking-wide text-center leading-tight border-2 min-h-12 rounded-md transition-all duration-300 ease-out ${
                 isSelected
-                  ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-bauhaus"
+                  ? "bg-primary text-primary-foreground border-primary shadow-bauhaus"
                   : "border-border/60 text-muted-foreground hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent hover:bg-muted/30"
               }`}
             >
@@ -131,7 +131,7 @@ export function DisciplinesExplorer({
                 aria-pressed={isSelected}
                 className={`min-w-0 px-6 py-2 text-sm font-semibold tracking-wide border-2 min-h-12 rounded-md transition-all duration-300 ease-out ${
                   isSelected
-                    ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-bauhaus"
+                    ? "bg-primary text-primary-foreground border-primary shadow-bauhaus"
                     : "border-border/60 text-muted-foreground hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent hover:bg-muted/30"
                 }`}
               >

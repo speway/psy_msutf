@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PsychologyBauhausBackground } from "@/components/psychology-bauhaus-background";
 import { Roadmap } from "@/components/roadmap";
 import { InternalLinkCard } from "@/components/internal-link-card";
 import { getTranslations, localizeHref } from "@/lib/i18n";
@@ -21,9 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = getTranslations(lang);
 
   const desc =
-    lang === "uz"
-      ? "7 bosqich: birinchi qiziqishdan o'quv yoki ilmiy loyihagacha. Talaba uchun mo'ljallangan yo'nalish."
-      : "7 steps: from first interest to an educational or scientific project. A route for students who want to try research.";
+    lang === "ru"
+      ? "7 шагов: от первого интереса к собственному учебному или научному проекту."
+      : lang === "uz"
+        ? "7 bosqich: birinchi qiziqishdan o'quv yoki ilmiy loyihagacha. Talaba uchun mo'ljallangan yo'nalish."
+        : "7 steps: from first interest to an educational or scientific project. A route for students who want to try research.";
 
   return {
     title: `${t.roadmapUI.heading} ${t.roadmapUI.headingLine2} — ${t.appName}`,
@@ -49,7 +50,6 @@ export default async function LangRoadmapPage({ params }: Props) {
 
   return (
     <>
-      <PsychologyBauhausBackground />
       <Roadmap t={t.roadmapUI} steps={steps} />
       <section className="container mx-auto px-4 py-12 md:py-16 border-t border-border">
         <div className="max-w-3xl mx-auto">

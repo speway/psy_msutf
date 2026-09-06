@@ -18,7 +18,7 @@ export function AnimateOnScroll({
   as: Tag = "div",
   direction = "up",
   scale = false,
-  duration = 1000,
+  duration = 450,
   id,
 }: AnimateOnScrollProps) {
   return (
@@ -30,7 +30,7 @@ export function AnimateOnScroll({
       style={
         {
           "--reveal-duration": `${duration}ms`,
-          "--reveal-delay": `${delay}ms`,
+          "--reveal-delay": `${Math.min(delay, 160)}ms`,
         } as React.CSSProperties
       }
     >

@@ -1,7 +1,5 @@
+import { SectionIntro } from "@/components/section-intro";
 import type { Metadata } from "next";
-import { History } from "lucide-react";
-import { BauhausDecor } from "@/components/bauhaus-decor";
-import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { InteractiveTimeline } from "@/components/interactive-timeline";
 import { academicTimeline } from "@/data";
@@ -12,8 +10,6 @@ export const dynamic = "force-dynamic";
 interface Props {
   params: Promise<{ lang: string }>;
 }
-
-const BURGUNDY = "var(--color-bauhaus-blue)";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
@@ -62,50 +58,13 @@ export default async function LangTimelinePage({ params }: Props) {
 
   return (
     <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 ">
-      <BauhausDecor />
-
-      <AnimateOnScroll
-        as="section"
-        className="relative border-b-2 border-bauhaus-blue/20 scroll-mt-[76px] lg:scroll-mt-24"
-        direction="up"
-      >
-        <div className="container mx-auto px-4 pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12">
-          <div className="max-w-[640px] mx-auto text-center">
-            <div
-              className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2"
-              style={{
-                borderColor:
-                  "color-mix(in srgb, var(--color-bauhaus-blue) 30%, transparent)",
-                color: BURGUNDY,
-                backgroundColor:
-                  "color-mix(in srgb, var(--color-bauhaus-ochre) 6%, transparent)",
-              }}
-            >
-              <History className="h-3 w-3" />
-              {badgeText}
-            </div>
-            <h1
-              className="text-3xl sm:text-4xl font-black leading-[1.05] tracking-tighter uppercase"
-              style={{ color: BURGUNDY }}
-            >
-              {titleText}
-            </h1>
-            <div
-              className="mx-auto mt-4 h-1 w-16"
-              style={{ backgroundColor: BURGUNDY }}
-            />
-            <p
-              className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[560px] mx-auto"
-              style={{
-                color:
-                  "color-mix(in srgb, var(--color-bauhaus-blue) 65%, transparent)",
-              }}
-            >
-              {descText}
-            </p>
-          </div>
-        </div>
-      </AnimateOnScroll>
+      <SectionIntro
+        title={titleText}
+        description={descText}
+        eyebrow={badgeText}
+        number="05.5"
+        lang={lang}
+      />
 
       <InteractiveTimeline entries={entries} />
 
