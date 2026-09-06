@@ -94,7 +94,7 @@ export function ContactCard({
 
           <div
             className={`overflow-hidden transition-all duration-300 ${
-              expanded ? "max-h-96 opacity-100 mt-3" : "max-h-0 opacity-0"
+              expanded ? "mt-3" : "hidden"
             }`}
           >
             <div className="space-y-2">
@@ -104,10 +104,10 @@ export function ContactCard({
                     <a
                       key={extra.label}
                       href={`tel:${extra.value.replace(/[^\d+]/g, "")}`}
-                      className="flex items-center gap-2 text-xs text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[36px]"
+                      className="contact-detail text-xs text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[44px]"
                     >
                       <Phone className="h-3 w-3 shrink-0" />
-                      <span className="font-medium shrink-0">
+                      <span className="font-medium min-w-0 break-words">
                         {extra.label}:
                       </span>
                       <span className="min-w-0 break-all">{extra.value}</span>
@@ -119,10 +119,10 @@ export function ContactCard({
                     <a
                       key={extra.label}
                       href={`mailto:${extra.value}`}
-                      className="flex items-center gap-2 text-xs text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[36px]"
+                      className="contact-detail text-xs text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[44px]"
                     >
                       <Mail className="h-3 w-3 shrink-0" />
-                      <span className="font-medium shrink-0">
+                      <span className="font-medium min-w-0 break-words">
                         {extra.label}:
                       </span>
                       <span className="min-w-0 break-all">{extra.value}</span>
@@ -135,10 +135,12 @@ export function ContactCard({
                     href={extra.value}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-xs text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[36px]"
+                    className="contact-detail text-xs text-muted-foreground hover:text-bauhaus-ochre transition-colors min-h-[44px]"
                   >
                     <ExternalLink className="h-3 w-3 shrink-0" />
-                    <span className="font-medium shrink-0">{extra.label}:</span>
+                    <span className="font-medium min-w-0 break-words">
+                      {extra.label}:
+                    </span>
                     <span className="min-w-0 break-all">{extra.value}</span>
                   </a>
                 );

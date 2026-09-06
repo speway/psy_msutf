@@ -16,6 +16,7 @@ const localizedRoutes = [
 ];
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["terminal.local"],
   images: {
     remotePatterns: [
       {

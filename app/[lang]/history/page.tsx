@@ -1,6 +1,6 @@
+import { SectionIntro } from "@/components/section-intro";
 import type { Metadata } from "next";
-import { Calendar, MapPin } from "lucide-react";
-import { PsychologyBauhausBackground } from "@/components/psychology-bauhaus-background";
+import { MapPin } from "lucide-react";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { InternalLinkCard } from "@/components/internal-link-card";
@@ -80,41 +80,12 @@ export default async function LangHistoryPage({ params }: Props) {
 
   return (
     <div className="relative animate-in fade-in slide-in-from-bottom-4 duration-500 ">
-      <PsychologyBauhausBackground />
-
-      <AnimateOnScroll
-        as="section"
-        className="relative border-b-2 border-bauhaus-blue/20 scroll-mt-[76px] lg:scroll-mt-24"
-        direction="up"
-      >
-        <div className="container mx-auto px-4 pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12">
-          <div className="max-w-[640px] mx-auto text-center">
-            <div
-              className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2"
-              style={{
-                borderColor:
-                  "color-mix(in srgb, var(--color-bauhaus-blue) 30%, transparent)",
-                color: BURGUNDY,
-                backgroundColor:
-                  "color-mix(in srgb, var(--color-bauhaus-ochre) 6%, transparent)",
-              }}
-            >
-              <Calendar className="h-3 w-3" />
-              {badgeText}
-            </div>
-            <h1
-              className="text-3xl sm:text-4xl font-black leading-[1.05] tracking-tighter uppercase"
-              style={{ color: BURGUNDY }}
-            >
-              {title}
-            </h1>
-            <div
-              className="mx-auto mt-4 h-1 w-16"
-              style={{ backgroundColor: BURGUNDY }}
-            />
-          </div>
-        </div>
-      </AnimateOnScroll>
+      <SectionIntro
+        title={title}
+        eyebrow={badgeText}
+        number="05.1"
+        lang={lang}
+      />
 
       <AnimateOnScroll
         as="section"
@@ -126,7 +97,7 @@ export default async function LangHistoryPage({ params }: Props) {
             <p
               key={index}
               className="text-sm sm:text-base leading-[1.8] mb-5 last:mb-0"
-              style={{ color: "rgba(8, 44, 54, 0.8)" }}
+              style={{ color: "var(--foreground)" }}
             >
               {paragraph}
             </p>
@@ -151,7 +122,7 @@ export default async function LangHistoryPage({ params }: Props) {
             <div className="relative">
               <div
                 className="absolute left-[19px] top-0 bottom-0 w-px hidden sm:block"
-                style={{ backgroundColor: "rgba(8, 44, 54, 0.15)" }}
+                style={{ backgroundColor: "rgba(48, 35, 63, 0.15)" }}
               />
 
               <div className="space-y-8">
@@ -175,7 +146,7 @@ export default async function LangHistoryPage({ params }: Props) {
                         <div
                           className="sm:hidden h-px flex-1"
                           style={{
-                            backgroundColor: "rgba(8, 44, 54, 0.15)",
+                            backgroundColor: "rgba(48, 35, 63, 0.15)",
                           }}
                         />
                       )}
@@ -214,8 +185,8 @@ export default async function LangHistoryPage({ params }: Props) {
           <div
             className="border-2 p-6 sm:p-8 md:p-10 relative"
             style={{
-              borderColor: "rgba(8, 44, 54, 0.2)",
-              backgroundColor: "rgba(8, 44, 54, 0.02)",
+              borderColor: "rgba(48, 35, 63, 0.2)",
+              backgroundColor: "rgba(48, 35, 63, 0.02)",
             }}
           >
             <div
@@ -227,13 +198,13 @@ export default async function LangHistoryPage({ params }: Props) {
               <div
                 className="flex h-10 w-10 items-center justify-center border-2 shrink-0"
                 style={{
-                  borderColor: "rgba(8, 44, 54, 0.2)",
-                  backgroundColor: "rgba(8, 44, 54, 0.04)",
+                  borderColor: "rgba(48, 35, 63, 0.2)",
+                  backgroundColor: "rgba(48, 35, 63, 0.04)",
                 }}
               >
                 <MapPin
                   className="h-4 w-4"
-                  style={{ color: "rgba(8, 44, 54, 0.6)" }}
+                  style={{ color: "rgba(48, 35, 63, 0.6)" }}
                 />
               </div>
               <h2
@@ -246,7 +217,7 @@ export default async function LangHistoryPage({ params }: Props) {
 
             <p
               className="text-sm sm:text-base leading-relaxed mb-6"
-              style={{ color: "rgba(8, 44, 54, 0.75)" }}
+              style={{ color: "rgba(48, 35, 63, 0.75)" }}
             >
               {room220.description}
             </p>
@@ -256,11 +227,11 @@ export default async function LangHistoryPage({ params }: Props) {
                 <li
                   key={index}
                   className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed"
-                  style={{ color: "rgba(8, 44, 54, 0.65)" }}
+                  style={{ color: "rgba(48, 35, 63, 0.65)" }}
                 >
                   <span
                     className="block w-1.5 h-1.5 rounded-full mt-[6px] shrink-0"
-                    style={{ backgroundColor: "rgba(8, 44, 54, 0.3)" }}
+                    style={{ backgroundColor: "rgba(48, 35, 63, 0.3)" }}
                   />
                   {detail}
                 </li>

@@ -206,7 +206,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
 
       {/* Alphabet filter - horizontal scroll */}
       <div
-        className="mx-auto mb-4 overflow-x-auto scrollbar-none pb-2"
+        className="glossary-alphabet mx-auto mb-4 overflow-x-auto scrollbar-none pb-2"
         role="group"
         aria-label={t.alphabetFilter}
       >
@@ -219,7 +219,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
             aria-pressed={!activeLetter}
             className={`px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider border transition-colors shrink-0 min-h-[44px] ${
               !activeLetter
-                ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(13,175,154,0.22)]"
+                ? "bg-primary text-primary-foreground border-primary shadow-[0_0_0_2px_rgba(137,80,187,0.22)]"
                 : "border-bauhaus-blue/20 text-bauhaus-blue/60 hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent"
             }`}
           >
@@ -234,9 +234,9 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
                 setVisibleCount(ITEMS_PER_PAGE);
               }}
               aria-pressed={activeLetter === letter}
-              className={`w-7 h-7 text-[11px] font-bold border transition-colors shrink-0 ${
+              className={`min-w-[44px] min-h-[44px] text-[13px] font-bold border transition-colors shrink-0 ${
                 activeLetter === letter
-                  ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(13,175,154,0.22)]"
+                  ? "bg-primary text-primary-foreground border-primary shadow-[0_0_0_2px_rgba(137,80,187,0.22)]"
                   : "border-bauhaus-blue/20 text-bauhaus-blue/60 hover:border-bauhaus-blue/40 hover:text-bauhaus-blue bg-transparent"
               }`}
             >
@@ -254,7 +254,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
             aria-pressed={showFilters}
             className={`px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider border transition-colors min-h-[44px] flex items-center gap-1.5 ${
               showFilters
-                ? "bg-bauhaus-blue text-white border-bauhaus-blue"
+                ? "bg-primary text-primary-foreground border-primary"
                 : "border-bauhaus-blue/15 text-bauhaus-blue/50 hover:border-bauhaus-blue/30 hover:text-bauhaus-blue bg-transparent"
             }`}
           >
@@ -280,7 +280,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
             aria-pressed={sortAlphabetical}
             className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border transition-colors min-h-[44px] ${
               sortAlphabetical
-                ? "bg-bauhaus-blue text-white border-bauhaus-blue shadow-[0_0_0_2px_rgba(13,175,154,0.22)]"
+                ? "bg-primary text-primary-foreground border-primary shadow-[0_0_0_2px_rgba(137,80,187,0.22)]"
                 : "border-bauhaus-blue/15 text-bauhaus-blue/50 hover:border-bauhaus-blue/30 hover:text-bauhaus-blue"
             }`}
           >
@@ -311,7 +311,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
                 aria-pressed={activeCategories.includes(cat)}
                 className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border transition-colors min-h-[44px] ${
                   activeCategories.includes(cat)
-                    ? "bg-bauhaus-ochre text-white border-bauhaus-ochre shadow-[0_0_0_2px_rgba(198,240,90,0.24)]"
+                    ? "bg-accent text-accent-foreground border-accent shadow-[0_0_0_2px_rgba(255,128,77,0.24)]"
                     : "border-bauhaus-blue/15 text-bauhaus-blue/50 hover:border-bauhaus-blue/30 hover:text-bauhaus-blue bg-transparent"
                 }`}
               >

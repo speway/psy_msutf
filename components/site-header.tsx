@@ -17,7 +17,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { getTranslations, localizeHref, useLangFromPath } from "@/lib/i18n";
 
-const DESKTOP_VISIBLE_COUNT = 5;
+const DESKTOP_VISIBLE_COUNT = 4;
 
 const MOBILE_THEMES = [
   { id: "academic", label: "Светлая", icon: Sun },
@@ -72,8 +72,9 @@ export function SiteHeader() {
     label: t.nav[item.key],
   }));
 
-  const visibleItems = NAV_ITEMS.slice(0, DESKTOP_VISIBLE_COUNT);
-  const overflowItems = NAV_ITEMS.slice(DESKTOP_VISIBLE_COUNT);
+  const desktopItems = NAV_ITEMS.filter((item) => item.key !== "home");
+  const visibleItems = desktopItems.slice(0, DESKTOP_VISIBLE_COUNT);
+  const overflowItems = desktopItems.slice(DESKTOP_VISIBLE_COUNT);
 
   useEffect(() => {
     if (prevPathname.current !== pathname) {
@@ -218,7 +219,6 @@ export function SiteHeader() {
           >
             <div className="brand-mark" aria-hidden="true">
               <span>Ψ</span>
-              <i />
             </div>
             <div className="brand-copy flex flex-col">
               <span className="brand-title">{t.nav.shortTitle}</span>
@@ -257,7 +257,7 @@ export function SiteHeader() {
                   className="dropdown-trigger"
                   aria-expanded={isMoreOpen}
                   aria-controls="more-nav-dropdown"
-                  aria-haspopup="listbox"
+                  aria-haspopup="true"
                 >
                   <span className="flex-1 text-left text-xs font-bold">
                     {t.nav.more}
@@ -273,19 +273,20 @@ export function SiteHeader() {
                   <div
                     id="more-nav-dropdown"
                     ref={moreRef}
-                    role="listbox"
+                    aria-label={t.nav.more}
                     className="dropdown-panel absolute right-0 top-full mt-1 z-50 w-44"
                   >
                     {overflowItems.map((link) => (
                       <Link
                         key={link.label}
                         href={link.href}
-                        role="option"
                         onClick={(e) => {
                           setIsMoreOpen(false);
                           handleNavClick(e, link.href);
                         }}
-                        aria-selected={pathname === link.href}
+                        aria-current={
+                          pathname === link.href ? "page" : undefined
+                        }
                         className={`dropdown-item font-bold ${
                           pathname === link.href ? "active" : ""
                         }`}
@@ -333,7 +334,19 @@ export function SiteHeader() {
               ref={burgerRef}
               onClick={() => setIsMobileMenuOpen((v) => !v)}
               className="mobile-menu-trigger xl:hidden flex h-11 w-11 items-center justify-center"
-              aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
+              aria-label={
+                lang === "en"
+                  ? isMobileMenuOpen
+                    ? "Close menu"
+                    : "Open menu"
+                  : lang === "uz"
+                    ? isMobileMenuOpen
+                      ? "Menyuni yopish"
+                      : "Menyuni ochish"
+                    : isMobileMenuOpen
+                      ? "Закрыть меню"
+                      : "Открыть меню"
+              }
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >

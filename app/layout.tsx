@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import "./globals.css";
+import "./editorial.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SkipLink } from "@/components/skip-link";
@@ -40,14 +41,14 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.svg?v=3",
-    apple: "/apple-touch-icon.svg?v=3",
+    icon: "/favicon.svg?v=4",
+    apple: "/apple-touch-icon.svg?v=4",
   },
   manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0daf9a",
+  themeColor: "#34244f",
 };
 
 export default async function RootLayout({

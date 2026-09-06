@@ -151,7 +151,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
               aria-selected={!activeRubric}
               className={`px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 transition-all duration-300 ease-out flex-shrink-0 min-h-[44px] whitespace-nowrap snap-start ${
                 !activeRubric
-                  ? "bg-bauhaus-blue text-white border-bauhaus-blue"
+                  ? "bg-primary text-primary-foreground border-primary"
                   : "bg-transparent text-bauhaus-blue border-bauhaus-blue/30 hover:border-bauhaus-blue hover:bg-bauhaus-blue/5"
               }`}
             >
@@ -171,7 +171,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
                   aria-selected={activeRubric === rubric}
                   className={`px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 transition-all duration-300 ease-out flex-shrink-0 min-h-[44px] whitespace-nowrap snap-start ${
                     activeRubric === rubric
-                      ? "bg-bauhaus-blue text-white border-bauhaus-blue"
+                      ? "bg-primary text-primary-foreground border-primary"
                       : "bg-transparent text-bauhaus-blue border-bauhaus-blue/30 hover:border-bauhaus-blue hover:bg-bauhaus-blue/5"
                   }`}
                 >
@@ -256,7 +256,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[clamp(16px,2vw,24px)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(16px,2vw,24px)]">
           {filteredPosts.map((post, index) => (
             <PostCard
               key={post.id}
@@ -310,7 +310,7 @@ function PostCard({
       direction={DIRECTIONS[index % DIRECTIONS.length]}
     >
       <Link
-        href={`/posts/${post.id}`}
+        href={`/${lang}/posts/${post.id}`}
         onClick={handleClick}
         className="block h-full no-underline"
         aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
@@ -385,7 +385,7 @@ interface CompactPostCardProps {
 function CompactPostCard({ post, t, lang }: CompactPostCardProps) {
   return (
     <Link
-      href={`/posts/${post.id}`}
+      href={`/${lang}/posts/${post.id}`}
       className="block no-underline"
       aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
     >
@@ -443,7 +443,7 @@ function PostFeedSkeleton() {
           />
         ))}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[clamp(16px,2vw,24px)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(16px,2vw,24px)]">
         {[1, 2, 3, 4].map((i) => (
           <div key={i} className="border-2 border-bauhaus-blue/10 p-0">
             <div className="aspect-video md:aspect-[4/3] animate-pulse bg-bauhaus-blue/5" />

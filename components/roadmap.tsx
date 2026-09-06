@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { localizeHref, useLangFromPath } from "@/lib/i18n";
 import {
   ArrowRight,
   ChevronDown,
@@ -22,6 +24,7 @@ interface RoadmapProps {
 }
 
 export function Roadmap({ t, steps }: RoadmapProps) {
+  const lang = useLangFromPath(usePathname());
   const stepList = steps ?? roadmapStepsRu;
   const [completed, setCompleted] = useState<Set<string>>(new Set());
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
@@ -76,7 +79,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
     <div className="roadmap-page relative animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="container mx-auto px-4 py-10 md:py-16 max-w-4xl">
         <Link
-          href="/"
+          href={localizeHref("/", lang)}
           className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-muted-foreground hover:text-foreground transition-colors mb-8 group no-underline"
         >
           <ArrowRight className="h-3.5 w-3.5 rotate-180 transition-transform group-hover:-translate-x-1" />
@@ -136,7 +139,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                     onClick={() => toggleStep(stepKey)}
                     className={`relative z-10 w-10 h-10 rounded-full border-2 flex items-center justify-center text-xs font-bold shrink-0 transition-all duration-300 ${
                       isCompleted
-                        ? "border-bauhaus-ochre bg-bauhaus-ochre text-white"
+                        ? "border-accent bg-accent text-accent-foreground"
                         : "border-bauhaus-blue/30 bg-background text-bauhaus-blue hover:border-bauhaus-blue/60"
                     }`}
                     aria-label={
@@ -236,7 +239,11 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                             {item.links.map((link, li) => (
                               <li key={li}>
                                 <Link
-                                  href={link.url}
+                                  href={
+                                    link.url.startsWith("/")
+                                      ? localizeHref(link.url, lang)
+                                      : link.url
+                                  }
                                   className="inline-flex items-center gap-1 text-[13px] font-medium text-bauhaus-blue hover:text-bauhaus-ochre transition-colors no-underline"
                                 >
                                   <ArrowRight className="w-2.5 h-2.5" />

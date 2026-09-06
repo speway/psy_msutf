@@ -9,7 +9,7 @@ export function PsiDecor({
     <span
       data-decor="true"
       aria-hidden="true"
-      className={`psi-decor-inline pointer-events-none select-none font-black leading-none ${className}`}
+      className={`psi-decor-inline pointer-events-none select-none font-bold leading-none ${className}`}
       style={{
         color: "var(--decor-secondary)",
         ...style,

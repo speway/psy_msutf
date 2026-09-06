@@ -14,7 +14,7 @@ export function BauhausImagePlaceholder({
       <div className="absolute -top-6 -right-6 h-20 w-20 border-2 border-bauhaus-blue/15" />
       <div className="absolute -bottom-4 -left-4 h-14 w-14 rounded-full border-2 border-bauhaus-ochre/15" />
       <span
-        className="relative z-10 text-7xl font-black text-bauhaus-blue/15 leading-none"
+        className="relative z-10 text-7xl font-bold text-bauhaus-blue/15 leading-none"
         aria-hidden="true"
       >
         Ψ

@@ -67,6 +67,8 @@ const TAG_BLACKLIST = new Set([
 ]);
 
 const TITLE_OVERRIDES: Record<string, string> = {
+  "tg-131": "1 сентября 1966 года основан факультет психологии МГУ",
+  "tg-133": "«Контекст» — сообщество психологов ТФ МГУ",
   "tg-79": "Тип личности: понять себя, а не повесить ярлык",
   "tg-57": "Открыта регистрация на Международную конференцию «Ломоносов-2026»",
   "tg-100":
@@ -576,7 +578,8 @@ export function normalizePost(post: Post): NormalizedPost | null {
     TITLE_OVERRIDES[post.id] ||
     normalizeTitle(post.title, post.content, rubric);
   const contentClean = cleanContentText(post.content);
-  let excerptClean = cleanAll(post.excerpt);
+  // Rebuild previews from the complete source so truncated imported words do not leak into cards.
+  let excerptClean = cleanAll(post.content || post.excerpt);
 
   if (rawCleanTitle) {
     const partPrefix = /^часть\s*\d+\s*\.\s*/i;
@@ -594,6 +597,15 @@ export function normalizePost(post: Post): NormalizedPost | null {
       .slice(rubric.length)
       .replace(/^[\s,;:.!?\-—]+/, "")
       .trim();
+  }
+
+  if (excerptClean.length > 180) {
+    const preview = excerptClean.slice(0, 181);
+    const boundary = preview.lastIndexOf(" ");
+    excerptClean =
+      preview
+        .slice(0, boundary > 100 ? boundary : 180)
+        .replace(/[\s,;:.!?\-—]+$/, "") + "…";
   }
 
   const links = extractLinks(post.content);

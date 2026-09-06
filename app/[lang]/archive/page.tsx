@@ -1,6 +1,6 @@
+import { SectionIntro } from "@/components/section-intro";
 import type { Metadata } from "next";
 import { ScrollToTop } from "@/components/scroll-to-top";
-import { BauhausBackground } from "@/components/bauhaus-background";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import { InternalLinkCard } from "@/components/internal-link-card";
 import { getTranslations, localizeHref } from "@/lib/i18n";
@@ -63,35 +63,20 @@ export default async function LangArchivePage({ params }: Props) {
 
   return (
     <div className="page-archive relative animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <BauhausBackground variant="archive" />
-
-      <AnimateOnScroll
-        as="section"
-        className="relative border-b-2 border-bauhaus-burgundy/30 bg-bauhaus-milky/30 scroll-mt-[72px] lg:scroll-mt-24"
-        direction="up"
-      >
-        <div className="container mx-auto px-4 pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12">
-          <div className="max-w-[920px] mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-burgundy/30 text-bauhaus-burgundy bg-bauhaus-milky/60">
-              {t.archive.badge}
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight text-bauhaus-burgundy">
-              {t.archive.title}
-            </h1>
-            <div className="mx-auto mt-4 h-1 w-16 bg-bauhaus-burgundy/40" />
-            <p className="mt-4 text-sm sm:text-base text-bauhaus-burgundy/60 max-w-[560px] mx-auto leading-relaxed">
-              {t.archive.desc}
-            </p>
-          </div>
-        </div>
-      </AnimateOnScroll>
+      <SectionIntro
+        title={t.archive.title}
+        description={t.archive.desc}
+        eyebrow={t.archive.badge}
+        number="05"
+        lang={lang}
+      />
 
       <AnimateOnScroll
         as="section"
         className="container mx-auto px-4 py-8 md:py-12"
         direction="up"
       >
-        <div className="max-w-[800px] mx-auto space-y-6">
+        <div className="archive-directory">
           {t.archive.items.map((item, index) => {
             const Icon = ARCHIVE_ICONS[index] || Music;
             return (
