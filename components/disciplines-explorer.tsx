@@ -157,7 +157,7 @@ export function DisciplinesExplorer({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t.searchPlaceholder}
-            className="w-full pl-11 pr-4 py-3 text-sm border-2 border-border/60 bg-card text-foreground placeholder:text-muted-foreground/72 outline-none transition-all duration-300 focus:border-bauhaus-blue/40"
+            className="w-full pl-11 pr-4 py-3 text-sm border-2 border-border/60 bg-card text-foreground placeholder:text-muted-foreground outline-none transition-all duration-300 focus:border-bauhaus-blue/40"
             aria-label={t.searchLabel}
           />
         </div>
@@ -172,7 +172,7 @@ export function DisciplinesExplorer({
           </p>
           <button
             onClick={handleReset}
-            className="text-xs font-bold uppercase tracking-wider text-bauhaus-ochre hover:text-bauhaus-ochre/80 transition-colors flex items-center gap-1.5"
+            className="text-xs font-bold uppercase tracking-wider text-bauhaus-ochre hover:text-bauhaus-ochre transition-colors flex items-center gap-1.5"
           >
             <RotateCcw className="h-3 w-3" aria-hidden="true" />
             {t.reset}
@@ -183,12 +183,12 @@ export function DisciplinesExplorer({
       {displayDisciplines.length === 0 && hasActiveFilters && (
         <div className="text-center py-12">
           <div className="inline-flex items-center justify-center w-14 h-14 border-2 border-muted-foreground/20 mb-4">
-            <Search className="h-6 w-6 text-muted-foreground/72" />
+            <Search className="h-6 w-6 text-muted-foreground" />
           </div>
           <p className="text-base font-medium text-muted-foreground">
             {t.nothingFound}
           </p>
-          <p className="text-sm mt-1.5 text-muted-foreground/72">
+          <p className="text-sm mt-1.5 text-muted-foreground">
             {t.tryChanging}
           </p>
         </div>

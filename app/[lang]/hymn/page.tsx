@@ -103,7 +103,7 @@ export default async function LangHymnPage({ params }: Props) {
       <article className="container mx-auto px-4 py-12 md:py-20 max-w-2xl relative">
         <Link
           href={lh("/")}
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-bauhaus-ochre/70 hover:text-bauhaus-blue transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-bauhaus-ochre hover:text-bauhaus-blue transition-colors mb-8 group"
         >
           <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
           {backLabel}
@@ -114,7 +114,7 @@ export default async function LangHymnPage({ params }: Props) {
         <h1 className="text-4xl sm:text-5xl font-serif font-bold leading-snug tracking-normal text-bauhaus-blue mb-2">
           {lang === "uz" ? "Ballada" : lang === "en" ? "Ballad" : "Баллада"}
           <br />
-          <span className="italic font-medium text-bauhaus-ochre/80">
+          <span className="italic font-medium text-bauhaus-ochre">
             ({lang === "uz" ? "Gimn" : lang === "en" ? "Hymn" : "Гимн"})
           </span>{" "}
           {lang === "uz"

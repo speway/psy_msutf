@@ -24,7 +24,7 @@ export function InternalLinkCard({
     >
       <div className="flex items-start gap-4">
         {Icon && (
-          <div className="w-10 h-10 flex items-center justify-center border border-bauhaus-ochre/30 text-bauhaus-ochre shrink-0 group-hover:bg-bauhaus-ochre group-hover:text-white transition-colors">
+          <div className="w-10 h-10 flex items-center justify-center border border-bauhaus-ochre/30 text-bauhaus-ochre shrink-0 group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
             <Icon className="h-5 w-5" />
           </div>
         )}

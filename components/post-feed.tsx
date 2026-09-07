@@ -411,7 +411,7 @@ function CompactPostCard({ post, t, lang }: CompactPostCardProps) {
             day: "numeric",
           })}
         </time>
-        <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-bauhaus-ochre/70 group-hover:text-bauhaus-ochre transition-colors shrink-0 min-h-[44px] px-2">
+        <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-bauhaus-ochre group-hover:text-bauhaus-ochre transition-colors shrink-0 min-h-[44px] px-2">
           {t.post.read}
         </span>
       </div>

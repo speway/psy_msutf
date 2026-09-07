@@ -13,7 +13,7 @@ interface Props {
   params: Promise<{ lang: string }>;
 }
 
-const BURGUNDY = "var(--color-bauhaus-blue)";
+const HISTORY_INK = "var(--color-bauhaus-blue)";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
@@ -114,7 +114,7 @@ export default async function LangHistoryPage({ params }: Props) {
           <div className="max-w-[720px] mx-auto">
             <h2
               className="text-lg sm:text-xl font-bold uppercase tracking-wider mb-8 text-center"
-              style={{ color: BURGUNDY }}
+              style={{ color: HISTORY_INK }}
             >
               {keyDatesHeading}
             </h2>
@@ -122,7 +122,7 @@ export default async function LangHistoryPage({ params }: Props) {
             <div className="relative">
               <div
                 className="absolute left-[19px] top-0 bottom-0 w-px hidden sm:block"
-                style={{ backgroundColor: "rgba(48, 35, 63, 0.15)" }}
+                style={{ backgroundColor: "var(--border)" }}
               />
 
               <div className="space-y-8">
@@ -135,9 +135,9 @@ export default async function LangHistoryPage({ params }: Props) {
                       <span
                         className="inline-flex items-center justify-center sm:w-10 sm:h-10 w-8 h-8 rounded-full text-xs font-bold border-2 shrink-0"
                         style={{
-                          borderColor: BURGUNDY,
-                          color: BURGUNDY,
-                          backgroundColor: "white",
+                          borderColor: HISTORY_INK,
+                          color: HISTORY_INK,
+                          backgroundColor: "var(--card)",
                         }}
                       >
                         {item.year}
@@ -146,7 +146,7 @@ export default async function LangHistoryPage({ params }: Props) {
                         <div
                           className="sm:hidden h-px flex-1"
                           style={{
-                            backgroundColor: "rgba(48, 35, 63, 0.15)",
+                            backgroundColor: "var(--border)",
                           }}
                         />
                       )}
@@ -154,7 +154,7 @@ export default async function LangHistoryPage({ params }: Props) {
                     <div className="flex-1 pb-4 sm:pb-0">
                       <h3
                         className="text-sm font-bold mb-1"
-                        style={{ color: BURGUNDY }}
+                        style={{ color: HISTORY_INK }}
                       >
                         {item.title}
                       </h3>
@@ -162,7 +162,7 @@ export default async function LangHistoryPage({ params }: Props) {
                         className="text-xs sm:text-sm leading-relaxed"
                         style={{
                           color:
-                            "color-mix(in srgb, var(--color-bauhaus-blue) 65%, transparent)",
+                            "var(--muted-foreground)",
                         }}
                       >
                         {item.description}
@@ -185,31 +185,31 @@ export default async function LangHistoryPage({ params }: Props) {
           <div
             className="border-2 p-6 sm:p-8 md:p-10 relative"
             style={{
-              borderColor: "rgba(48, 35, 63, 0.2)",
-              backgroundColor: "rgba(48, 35, 63, 0.02)",
+              borderColor: "var(--border)",
+              backgroundColor: "var(--card)",
             }}
           >
             <div
               className="absolute -top-[1px] left-8 right-8 h-[3px]"
-              style={{ backgroundColor: BURGUNDY }}
+              style={{ backgroundColor: HISTORY_INK }}
             />
 
             <div className="flex items-center gap-3 mb-5">
               <div
                 className="flex h-10 w-10 items-center justify-center border-2 shrink-0"
                 style={{
-                  borderColor: "rgba(48, 35, 63, 0.2)",
-                  backgroundColor: "rgba(48, 35, 63, 0.04)",
+                  borderColor: "var(--border)",
+                  backgroundColor: "var(--secondary)",
                 }}
               >
                 <MapPin
                   className="h-4 w-4"
-                  style={{ color: "rgba(48, 35, 63, 0.6)" }}
+                  style={{ color: "var(--muted-foreground)" }}
                 />
               </div>
               <h2
                 className="text-lg sm:text-xl font-bold uppercase tracking-wider"
-                style={{ color: BURGUNDY }}
+                style={{ color: HISTORY_INK }}
               >
                 {room220.title}
               </h2>
@@ -217,7 +217,7 @@ export default async function LangHistoryPage({ params }: Props) {
 
             <p
               className="text-sm sm:text-base leading-relaxed mb-6"
-              style={{ color: "rgba(48, 35, 63, 0.75)" }}
+              style={{ color: "var(--foreground)" }}
             >
               {room220.description}
             </p>
@@ -227,11 +227,11 @@ export default async function LangHistoryPage({ params }: Props) {
                 <li
                   key={index}
                   className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed"
-                  style={{ color: "rgba(48, 35, 63, 0.65)" }}
+                  style={{ color: "var(--muted-foreground)" }}
                 >
                   <span
                     className="block w-1.5 h-1.5 rounded-full mt-[6px] shrink-0"
-                    style={{ backgroundColor: "rgba(48, 35, 63, 0.3)" }}
+                    style={{ backgroundColor: "var(--accent)" }}
                   />
                   {detail}
                 </li>

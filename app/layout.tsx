@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
+import "./fonts.css";
 import "./globals.css";
 import "./editorial.css";
 import { SiteHeader } from "@/components/site-header";
@@ -64,6 +65,20 @@ export default async function RootLayout({
   return (
     <html lang={htmlLang} className="font-sans" suppressHydrationWarning>
       <head>
+        <link
+          rel="preload"
+          href="/fonts/onest/onest.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/lora/lora-italic.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html:

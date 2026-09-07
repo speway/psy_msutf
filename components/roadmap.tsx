@@ -178,7 +178,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                           className={`inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold tracking-wide border transition-colors rounded-sm min-h-[44px] ${
                             isCompleted
                               ? "border-bauhaus-ochre/40 text-bauhaus-ochre bg-bauhaus-ochre/5 hover:bg-bauhaus-ochre/10"
-                              : "border-bauhaus-blue/20 text-bauhaus-blue hover:bg-bauhaus-blue hover:text-white"
+                              : "border-bauhaus-blue/20 text-bauhaus-blue hover:bg-primary hover:text-primary-foreground"
                           }`}
                         >
                           {isCompleted ? t.done : t.mark}
@@ -300,7 +300,7 @@ export function Roadmap({ t, steps }: RoadmapProps) {
                 /* ignore */
               }
             }}
-            className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/72 hover:text-muted-foreground transition-colors"
+            className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
           >
             {t.reset}
           </button>

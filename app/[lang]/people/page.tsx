@@ -83,7 +83,7 @@ export default async function LangPeoplePage({ params }: Props) {
               <h3 className="text-lg font-bold text-bauhaus-blue mb-1">
                 {founder.name}
               </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground/70 mb-4 leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
                 {founder.role}
               </p>
               <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
@@ -149,7 +149,7 @@ export default async function LangPeoplePage({ params }: Props) {
                   <UserRound className="h-7 w-7 text-bauhaus-ochre/50" />
                 </div>
               </div>
-              <p className="text-sm sm:text-base text-muted-foreground/60 leading-relaxed max-w-[480px] mx-auto">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[480px] mx-auto">
                 {teachersPlaceholder.note}
               </p>
             </div>
