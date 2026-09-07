@@ -192,7 +192,7 @@ export default async function LangDepartmentPage({ params }: Props) {
                   {activity.highlights.map((highlight) => (
                     <li
                       key={highlight}
-                      className="flex items-start gap-2 text-xs text-muted-foreground/80"
+                      className="flex items-start gap-2 text-xs text-muted-foreground"
                     >
                       <span className="block w-1.5 h-1.5 rounded-full bg-bauhaus-ochre/50 mt-[5px] shrink-0" />
                       {highlight}
@@ -243,7 +243,7 @@ export default async function LangDepartmentPage({ params }: Props) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue hover:bg-bauhaus-blue hover:text-white transition-colors min-h-[44px] self-start"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-3 text-xs font-bold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue hover:bg-primary hover:text-primary-foreground transition-colors min-h-[44px] self-start"
                   >
                     {openSiteLabel}
                   </a>

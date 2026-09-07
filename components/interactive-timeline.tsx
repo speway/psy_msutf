@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 import type { AcademicTimelineEntry } from "@/data";
 
-const BURGUNDY = "var(--color-bauhaus-blue)";
+const TIMELINE_INK = "var(--foreground)";
 
 interface InteractiveTimelineProps {
   entries: AcademicTimelineEntry[];
@@ -29,7 +29,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
           <div className="relative">
             <div
               className="absolute left-[19px] top-0 bottom-0 w-px hidden sm:block"
-              style={{ backgroundColor: "color-mix(in srgb, var(--color-bauhaus-blue) 15%, transparent)" }}
+              style={{ backgroundColor: "var(--border)" }}
             />
 
             <div className="space-y-0">
@@ -54,10 +54,10 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                           className="inline-flex items-center justify-center sm:w-10 sm:h-10 w-8 h-8 rounded-full text-xs font-bold border-2 shrink-0 transition-all duration-300"
                           style={{
                             borderColor: isOpen
-                              ? BURGUNDY
-                              : "color-mix(in srgb, var(--color-bauhaus-blue) 25%, transparent)",
-                            color: isOpen ? "white" : BURGUNDY,
-                            backgroundColor: isOpen ? BURGUNDY : "white",
+                              ? "var(--primary)"
+                              : "var(--border)",
+                            color: isOpen ? "var(--primary-foreground)" : TIMELINE_INK,
+                            backgroundColor: isOpen ? "var(--primary)" : "var(--card)",
                           }}
                         >
                           {entry.year}
@@ -77,8 +77,8 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                             className="text-sm font-bold transition-colors duration-300"
                             style={{
                               color: isOpen
-                                ? BURGUNDY
-                                : "color-mix(in srgb, var(--color-bauhaus-blue) 75%, transparent)",
+                                ? TIMELINE_INK
+                                : "var(--muted-foreground)",
                             }}
                           >
                             {entry.title}
@@ -86,7 +86,7 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                           <ChevronDown
                             className="h-4 w-4 shrink-0 transition-transform duration-300"
                             style={{
-                              color: "color-mix(in srgb, var(--color-bauhaus-blue) 35%, transparent)",
+                              color: "var(--muted-foreground)",
                               transform: isOpen
                                 ? "rotate(180deg)"
                                 : "rotate(0deg)",
@@ -112,12 +112,12 @@ export function InteractiveTimeline({ entries }: InteractiveTimelineProps) {
                           <div
                             className="border-l-2 pl-4 sm:pl-6 py-2"
                             style={{
-                              borderColor: "color-mix(in srgb, var(--color-bauhaus-blue) 15%, transparent)",
+                              borderColor: "var(--border)",
                             }}
                           >
                             <p
                               className="text-xs sm:text-sm leading-relaxed"
-                              style={{ color: "color-mix(in srgb, var(--color-bauhaus-blue) 65%, transparent)" }}
+                              style={{ color: "var(--muted-foreground)" }}
                             >
                               {entry.description}
                             </p>

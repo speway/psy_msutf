@@ -95,7 +95,7 @@ export default async function LangProjectsPage({ params }: Props) {
                     {block.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-start gap-2 text-xs text-muted-foreground/80"
+                        className="flex items-start gap-2 text-xs text-muted-foreground"
                       >
                         <span className="block w-1.5 h-1.5 rounded-full bg-bauhaus-ochre/50 mt-[5px] shrink-0" />
                         {item}

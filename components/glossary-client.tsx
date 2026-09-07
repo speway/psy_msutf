@@ -151,7 +151,7 @@ export function GlossaryClient({ t }: GlossaryClientProps) {
         <div className="max-w-[720px] mx-auto mb-8 border-2 border-bauhaus-ochre/30 bg-bauhaus-ochre/[0.03] p-4 sm:p-5 relative">
           <button
             onClick={() => setShowTermOfDay(false)}
-            className="absolute top-2 right-2 text-muted-foreground/72 hover:text-muted-foreground transition-colors"
+            className="absolute top-2 right-2 text-muted-foreground hover:text-muted-foreground transition-colors"
             aria-label={t.termOfDay}
           >
             <X className="h-3.5 w-3.5" />

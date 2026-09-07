@@ -84,7 +84,7 @@ export default async function LangPostPage({ params }: Props) {
         <AnimateOnScroll delay={50} direction="left">
           <Link
             href={lh("/")}
-            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-bauhaus-ochre/70 hover:text-bauhaus-blue transition-colors mb-6 group relative min-h-[44px]"
+            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-bauhaus-ochre hover:text-bauhaus-blue transition-colors mb-6 group relative min-h-[44px]"
             aria-label={t.post.backLabel}
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
@@ -94,7 +94,7 @@ export default async function LangPostPage({ params }: Props) {
 
         <AnimateOnScroll delay={100} direction="up">
           {rubric && (
-            <span className="inline-block text-xs font-semibold uppercase tracking-widest px-2 py-0.5 border border-bauhaus-ochre/30 text-bauhaus-ochre/80 mb-3">
+            <span className="inline-block text-xs font-semibold uppercase tracking-widest px-2 py-0.5 border border-bauhaus-ochre/30 text-bauhaus-ochre mb-3">
               {rubric}
             </span>
           )}
@@ -190,7 +190,7 @@ export default async function LangPostPage({ params }: Props) {
                 href={telegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 text-sm font-bold uppercase tracking-wider border-2 border-bauhaus-blue/40 text-bauhaus-blue hover:bg-bauhaus-blue hover:text-white transition-colors duration-300 min-h-[44px]"
+                className="inline-flex items-center gap-2 px-5 py-3 text-sm font-bold uppercase tracking-wider border-2 border-bauhaus-blue/40 text-bauhaus-blue hover:bg-primary hover:text-primary-foreground transition-colors duration-300 min-h-[44px]"
               >
                 <ExternalLink className="h-4 w-4" />
                 {t.post.readOriginal}
@@ -260,7 +260,7 @@ export default async function LangPostPage({ params }: Props) {
 
                     <div className="px-4 pb-4 flex flex-col flex-1">
                       {post.rubric && (
-                        <span className="inline-block text-xs font-semibold uppercase tracking-wider px-2 py-0.5 border border-bauhaus-ochre/30 text-bauhaus-ochre/80 mb-2 self-start">
+                        <span className="inline-block text-xs font-semibold uppercase tracking-wider px-2 py-0.5 border border-bauhaus-ochre/30 text-bauhaus-ochre mb-2 self-start">
                           {post.rubric}
                         </span>
                       )}
