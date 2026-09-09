@@ -1,3 +1,5 @@
 {
-  "framework": "nextjs"
+  "functions": {
+    "api/telegram.py": { "maxDuration": 60 }
+  }
 }
