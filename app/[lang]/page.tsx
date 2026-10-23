@@ -113,14 +113,9 @@ export default async function LangHomePage({ params }: Props) {
               priority
               sizes="(max-width: 700px) 92vw, (max-width: 1100px) 44vw, 560px"
             />
-            <span className="art-label">
-              {c.visualLabel}
-              <span>Ψ / 01</span>
-            </span>
           </div>
           <figcaption>
             <span>{c.visualCaption}</span>
-            <span aria-hidden="true">↗</span>
           </figcaption>
         </figure>
       </section>
@@ -160,45 +155,43 @@ export default async function LangHomePage({ params }: Props) {
           </div>
           <div className="practice-grid">
             <a
-              className="practice-card practice-cases"
+              className="practice-card practice-cases group"
               href="https://psy-case-trainer.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div className="practice-card-meta">
                 <span>{c.casesTag}</span>
-                <ArrowUpRight size={22} aria-hidden="true" />
+                <ArrowUpRight size={20} aria-hidden="true" className="practice-arrow" />
               </div>
-              <div className="practice-symbol" aria-hidden="true">
-                <Brain size={64} strokeWidth={1} />
-                <span>Ψ</span>
+              <div className="practice-icon-badge" aria-hidden="true">
+                <Brain size={32} strokeWidth={1.75} />
               </div>
               <h3>{c.cases}</h3>
               <p>{c.casesDesc}</p>
               <span className="practice-cta">
                 {c.open}
-                <ArrowRight size={18} aria-hidden="true" />
+                <ArrowRight size={16} aria-hidden="true" />
               </span>
             </a>
             <a
-              className="practice-card practice-stats"
+              className="practice-card practice-stats group"
               href="https://psy-stat-lab.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div className="practice-card-meta">
                 <span>{c.statsTag}</span>
-                <ArrowUpRight size={22} aria-hidden="true" />
+                <ArrowUpRight size={20} aria-hidden="true" className="practice-arrow" />
               </div>
-              <div className="practice-symbol" aria-hidden="true">
-                <ChartNoAxesCombined size={64} strokeWidth={1} />
-                <span>∑</span>
+              <div className="practice-icon-badge" aria-hidden="true">
+                <ChartNoAxesCombined size={32} strokeWidth={1.75} />
               </div>
               <h3>{c.stats}</h3>
               <p>{c.statsDesc}</p>
               <span className="practice-cta">
                 {c.open}
-                <ArrowRight size={18} aria-hidden="true" />
+                <ArrowRight size={16} aria-hidden="true" />
               </span>
             </a>
           </div>

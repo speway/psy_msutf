@@ -17,7 +17,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { getTranslations, localizeHref, useLangFromPath } from "@/lib/i18n";
 
-const DESKTOP_VISIBLE_COUNT = 4;
+const DESKTOP_VISIBLE_COUNT = 6;
 
 const MOBILE_THEMES = [
   { id: "academic", label: "Светлая", icon: Sun },
@@ -236,10 +236,10 @@ export function SiteHeader() {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 aria-current={pathname === link.href ? "page" : undefined}
-                className={`px-3 py-1 text-sm font-bold tracking-wide rounded-[6px] transition-all duration-200 min-h-[42px] flex items-center border whitespace-nowrap ${
+                className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors flex items-center whitespace-nowrap min-h-[38px] ${
                   pathname === link.href
-                    ? "bg-accent/15 border-accent/30 text-foreground"
-                    : "border-transparent text-muted-foreground hover:text-foreground hover:bg-accent/10"
+                    ? "bg-primary/10 text-primary font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
                 }`}
               >
                 {link.label}

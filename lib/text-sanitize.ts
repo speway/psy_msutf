@@ -59,10 +59,39 @@ function normalizeCommonPredicateDash(text: string): string {
   return result;
 }
 
+function healClippedCapitalLetters(text: string): string {
+  let result = text;
+  // Fuse words accidentally split by markdown bold/italic tags, e.g. "В***стреча" -> "Встреча"
+  result = result.replace(/([А-Яа-яЁёA-Za-z])(?:\*|_)+([А-Яа-яЁёA-Za-z])/gu, "$1$2");
+  result = result.replace(/([А-Яа-яЁёA-Za-z])(?:\*|_)+\s*(?:\*|_)+([А-Яа-яЁёA-Za-z])/gu, "$1$2");
+
+  // Restore leading capital letters eaten by Telegram custom letter emoji tags
+  result = result.replace(
+    /(^|[\n.?!]\s*|[«"“'‘(]|\b)сихолог([а-яё]*)/gu,
+    "$1Психолог$2"
+  );
+  result = result.replace(
+    /(^|[\n.?!]\s*|[«"“'‘(]|\b)кзаменариум/gu,
+    "$1Экзаменариум"
+  );
+  result = result.replace(
+    /(^|[\n.?!]\s*|[«"“'‘(]|\b)стреча с представителем/gu,
+    "$1Встреча с представителем"
+  );
+  result = result.replace(
+    /(^|[\n.?!]\s*|[«"“'‘(]|\b)ежавю и жамевю/gu,
+    "$1Дежавю и жамевю"
+  );
+
+  return result;
+}
+
 export function sanitizePublicText(text: string): string {
   if (!text) return "";
 
-  return normalizeCommonPredicateDash(text)
+  const healed = healClippedCapitalLetters(text);
+
+  return normalizeCommonPredicateDash(healed)
     .replace(/\s+([,.;:!?])/g, "$1")
     .replace(/([,.;:!?])([^\s\n»”")])/g, "$1 $2")
     .replace(new RegExp(`\\s*${DASH}\\s*`, "gu"), (dash) => {

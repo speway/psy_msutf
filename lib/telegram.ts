@@ -106,8 +106,125 @@ function extractImageUrl(block: string): string | null {
   return null;
 }
 
+// Known custom emoji IDs mapped to their corresponding character/letter.
+// Paid Telegram emoji packs often use custom letter fonts for headings.
+const CUSTOM_EMOJI_LETTER_MAP: Record<string, string> = {
+  "5400340875530230704": "П",
+  "5400051562238209160": "Э",
+  "5400192535916212177": "Э",
+  "5402569194757708510": "В",
+  "5400263690622627063": "В",
+  "5400317304749714825": "Д",
+};
+
+// Russian word stems where an initial capital letter was replaced with a custom letter emoji
+const RUSSIAN_STEM_LETTER_MAP: Array<[RegExp, string]> = [
+  [/^сихолог/i, "П"],
+  [/^кзамена/i, "Э"],
+  [/^стреч/i, "В"],
+  [/^ежавю/i, "Д"],
+  [/^опрос/i, "В"],
+  [/^абот/i, "Р"],
+  [/^овост/i, "Н"],
+  [/^аук/i, "Н"],
+  [/^ероприяти/i, "М"],
+  [/^екци/i, "Л"],
+  [/^рактик/i, "П"],
+  [/^овет/i, "С"],
+  [/^тог/i, "И"],
+  [/^нонс/i, "А"],
+  [/^апис/i, "З"],
+  [/^ниг/i, "К"],
+  [/^тать/i, "С"],
+  [/^сследован/i, "И"],
+  [/^роект/i, "П"],
+  [/^онкурс/i, "К"],
+  [/^оздравл/i, "П"],
+  [/^нимани/i, "В"],
+  [/^ажн/i, "В"],
+  [/^ассписани/i, "Р"],
+  [/^арегистри/i, "З"],
+  [/^сылк/i, "С"],
+];
+
+function decodeEmojiHex(hex: string): string {
+  try {
+    return Buffer.from(hex, "hex").toString("utf8");
+  } catch {
+    return "";
+  }
+}
+
+function resolveTgEmojiTag(
+  fullTag: string,
+  emojiId: string | undefined,
+  innerHtml: string,
+  subsequentText: string
+): string {
+  // 1. Direct match in known custom emoji map
+  if (emojiId && CUSTOM_EMOJI_LETTER_MAP[emojiId]) {
+    return CUSTOM_EMOJI_LETTER_MAP[emojiId];
+  }
+
+  const cleanSub = subsequentText.replace(/<[^>]+>/g, "").trim();
+
+  // 2. Check background image url for telegram emoji hex
+  const hexMatch = innerHtml.match(
+    /url\(['"]?(?:https?:)?\/\/telegram\.org\/img\/emoji\/\d+\/([0-9A-Fa-f]+)\.png['"]?\)/i
+  );
+  if (hexMatch) {
+    const hex = hexMatch[1].toUpperCase();
+    // F09F94A4 is Telegram's placeholder icon (🔤) for custom letter emoji packs
+    if (hex === "F09F94A4") {
+      for (const [pattern, letter] of RUSSIAN_STEM_LETTER_MAP) {
+        if (pattern.test(cleanSub)) {
+          return letter;
+        }
+      }
+      return "";
+    }
+    const decoded = decodeEmojiHex(hex);
+    if (decoded) return decoded;
+  }
+
+  // 3. Check inner text of <b> tag inside the emoji (if not fallback '?' or '??')
+  const innerTextMatch = innerHtml.match(/<b>([\s\S]*?)<\/b>/i);
+  const innerText = innerTextMatch ? innerTextMatch[1].trim() : "";
+  if (innerText && innerText !== "??" && innerText !== "?" && innerText !== "🔤") {
+    return innerText;
+  }
+
+  // 4. Fallback check for stem matching on subsequent clipped text
+  for (const [pattern, letter] of RUSSIAN_STEM_LETTER_MAP) {
+    if (pattern.test(cleanSub)) {
+      return letter;
+    }
+  }
+
+  return "";
+}
+
 function convertTelegramHtmlToMarkdown(html: string): string {
   let text = html;
+
+  // 1. Replace <tg-emoji> tags with resolved characters/letters before any tag stripping
+  text = text.replace(
+    /<tg-emoji(?:\s+emoji-id="(\d+)")?[^>]*>([\s\S]*?)<\/tg-emoji>([\s\S]{0,60})/gi,
+    (match, emojiId, innerHtml, subsequentText) => {
+      const resolved = resolveTgEmojiTag(match, emojiId, innerHtml, subsequentText);
+      return resolved + subsequentText;
+    }
+  );
+
+  // 2. Replace standalone <i class="emoji"> tags (outside tg-emoji) with decoded Unicode
+  text = text.replace(
+    /<i[^>]*class="[^"]*emoji[^"]*"[^>]*style="[^"]*url\(['"]?(?:https?:)?\/\/telegram\.org\/img\/emoji\/\d+\/([0-9A-Fa-f]+)\.png['"]?\)[^"]*"[^>]*>([\s\S]*?)<\/i>/gi,
+    (_, hex) => {
+      const decoded = decodeEmojiHex(hex);
+      return decoded || "";
+    }
+  );
+
   text = text.replace(/<br\s*\/?>/gi, "\n");
   text = text.replace(/<b>\s*([\s\S]*?)\s*<\/b>/g, "**$1**");
   text = text.replace(/<i>\s*([\s\S]*?)\s*<\/i>/g, "*$1*");
@@ -121,6 +238,12 @@ function convertTelegramHtmlToMarkdown(html: string): string {
   text = text.replace(/&gt;/g, ">");
   text = text.replace(/&quot;/g, '"');
   text = text.replace(/&#39;/g, "'");
+
+  // 3. Fuse split letters where bold/italic asterisks separated the initial letter from the word
+  // e.g. "В***стреча" -> "Встреча", "***Д******ежавю***" -> "***Дежавю***"
+  text = text.replace(/([А-Яа-яЁёA-Za-z])(?:\*|_)+([А-Яа-яЁёA-Za-z])/gu, "$1$2");
+  text = text.replace(/([А-Яа-яЁёA-Za-z])(?:\*|_)+\s*(?:\*|_)+([А-Яа-яЁёA-Za-z])/gu, "$1$2");
+
   text = text.replace(/\n{3,}/g, "\n\n");
   return text.trim();
 }

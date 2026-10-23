@@ -432,11 +432,12 @@ a:where(
   flex-shrink: 0;
 }
 .editorial-hero h1 {
-  font-size: clamp(3.7rem, 6.4vw, 6.1rem);
-  line-height: 1.045;
-  margin: 30px 0 25px;
+  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  line-height: 1.1;
+  margin: 24px 0 20px;
   max-width: 100%;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 .psychology-home em {
   font-family: var(--font-reading);
@@ -646,26 +647,32 @@ a:where(
 .practice-card-meta svg {
   flex-shrink: 0;
 }
-.practice-symbol {
-  display: flex;
+.practice-icon-badge {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  padding-block: 38px 28px;
-  height: 170px;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin-block: 24px 18px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
 }
-.practice-symbol > svg {
-  width: 66px;
-  height: 66px;
+.practice-icon-badge svg {
+  width: 28px;
+  height: 28px;
 }
-.practice-symbol span {
-  font-family: var(--font-reading);
-  font-size: 116px;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--feature-accent);
+.practice-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.practice-stats .practice-symbol span {
-  color: var(--soft-feature-accent);
+.practice-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.practice-arrow {
+  transition: transform 0.2s ease;
+}
+.practice-card:hover .practice-arrow {
+  transform: translate(2px, -2px);
 }
 .practice-card h3 {
   font-size: clamp(1.6rem, 2.6vw, 2.3rem);
@@ -1168,12 +1175,6 @@ a:where(
   .practice-card {
     padding: 24px;
   }
-  .practice-symbol {
-    height: 145px;
-  }
-  .practice-symbol span {
-    font-size: 90px;
-  }
   .knowledge-section {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1337,10 +1338,6 @@ a:where(
   }
   .practice-card {
     padding: 24px;
-  }
-  .practice-symbol {
-    height: 130px;
-    padding-block: 24px 20px;
   }
   .practice-card h3 {
     font-size: 1.8rem;

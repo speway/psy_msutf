@@ -110,11 +110,28 @@ async function main() {
   const existing = readExistingPosts();
   const raw = await fetchAllTelegramPosts(channelName, { maxPages });
   const modelPosts = raw.map(toPost);
-  const normalized = normalizePosts(modelPosts);
+
+  // Merge newly fetched posts with existing archive to ensure historical posts are never lost
+  const mergedMap = new Map<string, Post>(existing);
+  for (const p of modelPosts) {
+    mergedMap.set(p.id, p);
+  }
+
+  const allPosts = Array.from(mergedMap.values());
+  const normalized = normalizePosts(allPosts);
 
   if (normalized.length === 0) {
     throw new Error("Telegram sync produced 0 posts. data/posts.json was not overwritten.");
   }
+
+  // Sort descending by date, then by telegram ID
+  normalized.sort((a, b) => {
+    const diff = new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (diff !== 0) return diff;
+    const aNum = parseInt(a.telegramId || a.id.replace(/\D/g, "") || "0", 10);
+    const bNum = parseInt(b.telegramId || b.id.replace(/\D/g, "") || "0", 10);
+    return bNum - aNum;
+  });
 
   const posts = normalized.map((post) =>
     withStableMetadata(

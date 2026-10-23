@@ -99,31 +99,20 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
 
   return (
     <>
-      <div className="post-feed-heading flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
-        <div
-          className="bauhaus-angle-full relative w-10 h-10 hidden md:block flex-shrink-0"
-          aria-hidden="true"
-        >
-          <div className="angle-tl" />
-          <div className="angle-bl" />
-          <div className="angle-tr" />
-          <div className="angle-br" />
-        </div>
-        <h2 className="text-2xl font-bold uppercase tracking-tight">
-          {t.publications.title}
+      <div className="post-feed-heading flex flex-wrap items-center justify-between gap-3 sm:gap-4 mb-6">
+        <div className="flex items-center gap-3">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+            {t.publications.title}
+          </h2>
           {filteredPosts.length > 0 && (
-            <span className="ml-3 text-base font-medium text-muted-foreground tracking-normal normal-case">
+            <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary">
               {filteredPosts.length}
             </span>
           )}
-        </h2>
-        <div
-          className="hidden sm:block flex-1 h-px bg-bauhaus-blue/25"
-          aria-hidden="true"
-        />
+        </div>
         <button
           onClick={() => setCompactView((v) => !v)}
-          className="flex w-full sm:w-auto items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold uppercase tracking-wider border-2 border-bauhaus-blue/30 text-bauhaus-blue hover:bg-bauhaus-blue/5 hover:border-bauhaus-blue transition-colors min-h-[44px] flex-shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors shadow-xs"
           aria-label={
             compactView ? t.publications.normalView : t.publications.compactView
           }
@@ -134,30 +123,30 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
           ) : (
             <List className="h-3.5 w-3.5" aria-hidden="true" />
           )}
-          {compactView ? t.publications.normalView : t.publications.compactView}
+          <span>{compactView ? t.publications.normalView : t.publications.compactView}</span>
         </button>
       </div>
 
       <div
-        className="post-feed-tabs sticky top-[72px] z-20 bg-background/95 backdrop-blur-sm -mx-4 px-4 py-3 border-b border-border mb-6"
+        className="post-feed-tabs sticky top-[72px] z-20 bg-background/95 backdrop-blur-md -mx-4 px-4 py-3 border-b border-border/60 mb-6"
         role="tablist"
         aria-label={t.publications.rubric}
       >
         <div className="relative">
-          <div className="flex gap-2 overflow-x-auto scrollbar-none snap-x snap-mandatory">
+          <div className="flex gap-2 overflow-x-auto scrollbar-none snap-x pb-0.5">
             <button
               onClick={() => handleRubricClick("")}
               role="tab"
               aria-selected={!activeRubric}
-              className={`px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 transition-all duration-300 ease-out flex-shrink-0 min-h-[44px] whitespace-nowrap snap-start ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 flex-shrink-0 whitespace-nowrap snap-start shadow-xs ${
                 !activeRubric
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-transparent text-bauhaus-blue border-bauhaus-blue/30 hover:border-bauhaus-blue hover:bg-bauhaus-blue/5"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted/70 text-muted-foreground hover:text-foreground hover:bg-muted border border-border/60"
               }`}
             >
               {t.publications.all}
-              <span className="ml-1.5 text-[10px] opacity-70">
-                ({posts.length})
+              <span className="ml-1.5 text-[11px] opacity-75">
+                {posts.length}
               </span>
             </button>
             {rubricsWithoutAll.map((rubric) => {
@@ -169,22 +158,22 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
                   onClick={() => handleRubricClick(rubric)}
                   role="tab"
                   aria-selected={activeRubric === rubric}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 transition-all duration-300 ease-out flex-shrink-0 min-h-[44px] whitespace-nowrap snap-start ${
+                  className={`px-3.5 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 flex-shrink-0 whitespace-nowrap snap-start shadow-xs ${
                     activeRubric === rubric
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-transparent text-bauhaus-blue border-bauhaus-blue/30 hover:border-bauhaus-blue hover:bg-bauhaus-blue/5"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted/70 text-muted-foreground hover:text-foreground hover:bg-muted border border-border/60"
                   }`}
                 >
                   {label}
-                  <span className="ml-1.5 text-[10px] opacity-70">
-                    ({count})
+                  <span className="ml-1.5 text-[11px] opacity-75">
+                    {count}
                   </span>
                 </button>
               );
             })}
           </div>
           <div
-            className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background/95 to-transparent pointer-events-none"
+            className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none"
             aria-hidden="true"
           />
         </div>
@@ -192,7 +181,7 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
 
       <div className="relative mb-6">
         <Search
-          className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none"
           aria-hidden="true"
         />
         <input
@@ -200,16 +189,16 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
           value={searchQuery}
           onChange={(e) => handleSearchChange(e.target.value)}
           placeholder={t.publications.search}
-          className="w-full pl-10 pr-4 py-3 text-base sm:text-sm border-2 border-bauhaus-blue/20 bg-background focus:border-bauhaus-blue focus:outline-none transition-colors"
+          className="w-full pl-10 pr-9 py-2.5 text-sm rounded-xl border border-border bg-card/80 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all shadow-xs"
           aria-label={t.publications.search}
         />
         {searchQuery && (
           <button
             onClick={() => handleSearchChange("")}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground min-h-[44px]"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-1 rounded-md"
             aria-label={t.publications.clear}
           >
-            <X className="h-4 w-4" />
+            <X className="h-3.5 w-3.5" />
           </button>
         )}
       </div>
@@ -274,15 +263,6 @@ function PostFeedInner({ posts, lang = "ru" }: PostFeedProps) {
   );
 }
 
-const DIRECTIONS: Array<"up" | "down" | "left" | "right"> = [
-  "left",
-  "right",
-  "up",
-  "right",
-  "left",
-  "down",
-];
-
 interface PostCardProps {
   post: NormalizedPost;
   index: number;
@@ -306,8 +286,8 @@ function PostCard({
 
   return (
     <AnimateOnScroll
-      delay={100 + index * 80}
-      direction={DIRECTIONS[index % DIRECTIONS.length]}
+      delay={Math.min(index * 30, 180)}
+      direction="up"
     >
       <Link
         href={`/${lang}/posts/${post.id}`}
@@ -316,16 +296,11 @@ function PostCard({
         aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
       >
         <article
-          className={`group bauhaus-card bauhaus-card-hover h-full flex flex-col cursor-pointer relative ${
-            clickedId === post.id ? "bauhaus-card-click" : ""
+          className={`group rounded-xl border border-border/80 bg-card overflow-hidden shadow-xs hover:shadow-md hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-300 h-full flex flex-col cursor-pointer relative ${
+            clickedId === post.id ? "scale-[0.99] opacity-90" : ""
           }`}
         >
-          {/* Ψ watermark in card cover */}
-          <PsiDecor
-            className="absolute top-2 right-2 text-2xl sm:text-3xl z-[1]"
-            style={{ opacity: 0.08 }}
-          />
-          <div className="relative w-full mb-3 aspect-video md:aspect-[4/3] bg-bauhaus-burgundy/[0.03]">
+          <div className="relative w-full aspect-video md:aspect-[16/10] bg-muted/40 overflow-hidden">
             <BauhausCover
               cleanTitle={post.cleanTitle}
               rubric={post.rubric}
@@ -333,40 +308,40 @@ function PostCard({
             />
           </div>
 
-          <div className="px-4 pb-4 flex flex-col flex-1">
+          <div className="p-4 sm:p-5 flex flex-col flex-1">
             {post.rubric && (
               <span
-                className={`rubric-badge-${post.rubric} inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border mb-2 self-start`}
+                className={`rubric-badge-${post.rubric} inline-block px-2.5 py-0.5 text-[11px] font-semibold rounded-md border mb-2.5 self-start`}
               >
                 {t.publications.rubrics[post.rubric] || post.rubric}
               </span>
             )}
 
-            <h3 className="text-lg font-semibold leading-snug mb-2 text-balance group-hover:text-bauhaus-ochre transition-colors duration-300">
+            <h3 className="text-base sm:text-lg font-bold leading-snug mb-2 text-foreground group-hover:text-primary transition-colors duration-200">
               {post.cleanTitle}
             </h3>
 
             {post.excerpt && (
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3 line-clamp-3 flex-1">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3 flex-1">
                 {post.excerpt}
               </p>
             )}
 
-            <div className="flex items-center justify-between pt-3 border-t-2 border-bauhaus-blue/20 mt-auto">
+            <div className="flex items-center justify-between pt-3 border-t border-border/60 mt-auto text-xs">
               <time
-                className="text-xs text-muted-foreground"
+                className="text-muted-foreground"
                 dateTime={post.date}
                 suppressHydrationWarning
               >
                 {new Date(post.date).toLocaleDateString(getLocale(lang), {
                   year: "numeric",
-                  month: "long",
+                  month: "short",
                   day: "numeric",
                 })}
               </time>
 
-              <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-bauhaus-ochre group-hover:text-bauhaus-blue transition-colors duration-300 min-h-[44px] px-3">
-                {t.post.read}
+              <span className="inline-flex items-center gap-1 font-semibold text-primary group-hover:underline">
+                {t.post.read} →
               </span>
             </div>
           </div>
@@ -389,30 +364,30 @@ function CompactPostCard({ post, t, lang }: CompactPostCardProps) {
       className="block no-underline"
       aria-label={`${t.post.ariaRead}: ${post.cleanTitle}`}
     >
-      <div className="compact-post-card group border-2 border-border/60 hover:border-bauhaus-ochre/30 hover:bg-bauhaus-blue/[0.02] transition-all duration-200 px-4 py-3 flex items-center gap-4 min-h-[56px]">
+      <div className="compact-post-card group rounded-xl border border-border/70 bg-card hover:border-primary/40 hover:bg-muted/30 transition-all duration-200 px-4 py-3 flex items-center gap-4 min-h-[56px] shadow-xs">
         {post.rubric && (
           <span
-            className={`rubric-badge-${post.rubric} text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 border shrink-0 hidden sm:inline-block`}
+            className={`rubric-badge-${post.rubric} text-[10px] font-semibold rounded-md px-2 py-0.5 border shrink-0 hidden sm:inline-block`}
           >
             {t.publications.rubrics[post.rubric] || post.rubric}
           </span>
         )}
-        <h3 className="text-lg font-semibold leading-snug group-hover:text-bauhaus-ochre transition-colors line-clamp-1 flex-1 min-w-0">
+        <h3 className="text-sm sm:text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-1 flex-1 min-w-0">
           {post.cleanTitle}
         </h3>
         <time
-          className="text-[11px] text-muted-foreground shrink-0 hidden sm:block"
+          className="text-xs text-muted-foreground shrink-0 hidden sm:block"
           dateTime={post.date}
           suppressHydrationWarning
         >
           {new Date(post.date).toLocaleDateString(getLocale(lang), {
             year: "numeric",
-            month: "numeric",
+            month: "short",
             day: "numeric",
           })}
         </time>
-        <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-bauhaus-ochre group-hover:text-bauhaus-ochre transition-colors shrink-0 min-h-[44px] px-2">
-          {t.post.read}
+        <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary shrink-0">
+          {t.post.read} →
         </span>
       </div>
     </Link>

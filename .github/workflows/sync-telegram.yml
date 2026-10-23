@@ -2,8 +2,13 @@ name: Sync Telegram Posts
 
 on:
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "0 */4 * * *"
   workflow_dispatch:
+    inputs:
+      max_pages:
+        description: "Max pages to scrape from Telegram channel"
+        required: false
+        default: "50"
 
 permissions:
   contents: write
@@ -34,7 +39,7 @@ jobs:
         env:
           TELEGRAM_CHANNEL_NAME: psy_msutf
           TELEGRAM_CHANNEL_URL: https://t.me/psy_msutf
-          TELEGRAM_MAX_PAGES: "30"
+          TELEGRAM_MAX_PAGES: ${{ inputs.max_pages || '50' }}
 
       - name: Check content
         run: npm run check:content
@@ -42,11 +47,14 @@ jobs:
       - name: Commit and push changes
         run: |
           if [ -z "$(git status --porcelain data/posts.json)" ]; then
-            echo "No Telegram changes"
+            echo "No Telegram changes detected"
+            echo "### Telegram Sync: No changes" >> $GITHUB_STEP_SUMMARY
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/posts.json
-          git commit -m "chore: sync Telegram posts"
+          git commit -m "chore: sync Telegram posts [skip ci]"
           git push
+          echo "### Telegram Sync: Success" >> $GITHUB_STEP_SUMMARY
+          echo "Updated data/posts.json with fresh posts." >> $GITHUB_STEP_SUMMARY
