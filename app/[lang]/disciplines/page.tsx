@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       lang === "uz"
         ? "Psixologiya yo'nalishi fanlari, seminar dasturlari, manbalar katalogi va ilmiy profillar."
         : lang === "en"
-          ? "Psychology department disciplines, seminar syllabi, digital source reader, glossary and faculty scientific profiles."
-          : "Учебные дисциплины, программы семинарских занятий 2026, полнотекстовый ридер первоисточников, психологический глоссарий и научные профили преподавателей кафедры психологии ТФ МГУ.",
+          ? "Psychology department disciplines, seminar syllabi, digital source reader and faculty scientific profiles."
+          : "Учебные дисциплины, программы семинарских занятий 2026, полнотекстовый ридер первоисточников и научные профили преподавателей кафедры психологии ТФ МГУ.",
     openGraph: {
       title: `${lang === "uz" ? "Fanlar va dasturlar" : lang === "en" ? "Disciplines & Syllabi" : "Академические программы и силлабусы"} — ${t.appName}`,
       description:
@@ -81,7 +81,6 @@ export default async function LangDisciplinesPage({ params }: Props) {
       >
         <AcademicHubContainer
           t={t.disciplinesUI}
-          glossaryUI={t.glossaryUI}
           disciplineNotice={t.siteNotice.disciplines}
         />
       </AnimateOnScroll>
