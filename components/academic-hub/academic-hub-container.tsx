@@ -7,6 +7,7 @@ import {
   UserRound,
   Archive,
   Layers,
+  BookMarked,
 } from "lucide-react";
 import { CourseExplorer } from "./course-explorer";
 import { TeacherProfileView } from "./teacher-profile-view";
@@ -14,18 +15,27 @@ import { LiteratureCatalogView } from "./literature-catalog-view";
 import { AcademicReaderModal } from "./academic-reader-modal";
 import { studentWorksArchive } from "@/data/academic-hub";
 import { DisciplinesExplorer } from "@/components/disciplines-explorer";
-import type { DisciplinesUITranslation } from "@/data/i18n";
+import { GlossaryClient } from "@/components/glossary-client";
+import type { DisciplinesUITranslation, GlossaryUITranslation } from "@/data/i18n";
 
-type HubTabId = "disciplines" | "profile" | "literature" | "archive" | "curriculum";
+type HubTabId =
+  | "disciplines"
+  | "profile"
+  | "literature"
+  | "glossary"
+  | "archive"
+  | "curriculum";
 
 interface AcademicHubContainerProps {
   t: DisciplinesUITranslation;
+  glossaryUI?: GlossaryUITranslation;
   defaultTab?: HubTabId;
   disciplineNotice?: string;
 }
 
 export function AcademicHubContainer({
   t,
+  glossaryUI,
   defaultTab = "disciplines",
   disciplineNotice,
 }: AcademicHubContainerProps) {
@@ -53,6 +63,7 @@ export function AcademicHubContainer({
           { id: "disciplines" as const, label: "Силлабусы и семинары", icon: Layers, badge: "9 тем" },
           { id: "profile" as const, label: "Научный профиль (Туниянц А.А.)", icon: UserRound, badge: "ИСТИНА" },
           { id: "literature" as const, label: "Каталог литературы", icon: BookOpen, badge: "19 книг" },
+          { id: "glossary" as const, label: "Глоссарий (Термин дня)", icon: BookMarked, badge: "280 слов" },
           { id: "archive" as const, label: "Архив исследований и ВКР", icon: Archive, badge: "ВКР" },
           { id: "curriculum" as const, label: "Учебный план кафедры", icon: GraduationCap, badge: "1–4 курс" },
         ].map((tab) => {
@@ -106,7 +117,14 @@ export function AcademicHubContainer({
         <LiteratureCatalogView onOpenReader={handleOpenReader} />
       )}
 
-      {/* Tab 4: Student Research Archive */}
+      {/* Tab 4: Psychology Glossary & Term of the Day */}
+      {activeHubTab === "glossary" && glossaryUI && (
+        <div className="space-y-6">
+          <GlossaryClient t={glossaryUI} />
+        </div>
+      )}
+
+      {/* Tab 5: Student Research Archive */}
       {activeHubTab === "archive" && (
         <div className="space-y-6">
           <div className="p-6 rounded-2xl bg-[#fffefa] dark:bg-[#1f172a] border border-[#d9d0df] dark:border-[#433256] shadow-sm">
@@ -165,7 +183,7 @@ export function AcademicHubContainer({
         </div>
       )}
 
-      {/* Tab 5: Traditional Curriculum Explorer */}
+      {/* Tab 6: Traditional Curriculum Explorer */}
       {activeHubTab === "curriculum" && (
         <DisciplinesExplorer t={t} disciplineNotice={disciplineNotice} />
       )}
