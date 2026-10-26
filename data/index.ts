@@ -33,3 +33,24 @@ export {
   ALLOWED_DUPLICATES,
   FORBIDDEN_SUBJECTS,
 } from "./disciplines";
+
+export type {
+  SeminarLiterature,
+  SeminarTopic,
+  CourseProgram,
+  TeacherPublication,
+  SupervisionTopic,
+  TeacherFullProfile,
+  ReaderPage,
+  ReaderSourceItem,
+  StudentWork,
+} from "./academic-hub";
+
+export {
+  tuniyantsProfile,
+  motivationEmotionCourse,
+  professionalSocializationCourse,
+  academicReaderSources,
+  studentWorksArchive,
+  academicLiteratureCatalog,
+} from "./academic-hub";
